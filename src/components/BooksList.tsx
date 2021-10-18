@@ -5,6 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import booksList from '../helpers/fetchData';
 
 function BooksList() {
     return (
@@ -20,16 +21,16 @@ function BooksList() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
-                        <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                            <TableCell component="th" scope="row">
-                                {row.name}
+                    {booksList.map((book) => (
+                        <TableRow key={book.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                            <TableCell component="th" scope="book">
+                                {book.title}
                             </TableCell>
-                            <TableCell>{row.title}</TableCell>
-                            <TableCell>{row.author}</TableCell>
-                            <TableCell>{row.publishing}</TableCell>
-                            <TableCell>{row.genre}</TableCell>
-                            <TableCell>{row.price}</TableCell>
+                            <TableCell>{book.title}</TableCell>
+                            <TableCell>{book.author}</TableCell>
+                            <TableCell>{book.publishing}</TableCell>
+                            <TableCell>{book.genre}</TableCell>
+                            <TableCell>{book.price}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

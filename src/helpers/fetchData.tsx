@@ -1,4 +1,4 @@
-const booksList = () => [
+const booksList = [
     {
         id: 1,
         title: 'Billy Summers',
