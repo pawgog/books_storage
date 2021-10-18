@@ -1,8 +1,12 @@
-import React from 'react';
-// import './styles/Root.scss';
+import * as React from 'react';
+import BooksList from './components/BooksList';
 
 function Root() {
-    return <div className="dashboard-body">test</div>;
+    return (
+        <div className="dashboard-body">
+            <BooksList />
+        </div>
+    );
 }
 
 export default Root;
