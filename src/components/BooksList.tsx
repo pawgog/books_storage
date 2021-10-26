@@ -22,10 +22,7 @@ function BooksList() {
                 </TableHead>
                 <TableBody>
                     {booksList.map((book) => (
-                        <TableRow key={book.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                            <TableCell component="th" scope="book">
-                                {book.title}
-                            </TableCell>
+                        <TableRow key={book.id}>
                             <TableCell>{book.title}</TableCell>
                             <TableCell>{book.author}</TableCell>
                             <TableCell>{book.publishing}</TableCell>
