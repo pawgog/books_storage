@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Dialog, Button } from '@mui/material';
+import BookForm from './BookForm';
 
 function BookModal() {
     const [open, setOpen] = React.useState(false);
@@ -18,7 +19,7 @@ function BookModal() {
                 Open dialog
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <p>Modal content</p>
+                <BookForm />
             </Dialog>
         </div>
     );
