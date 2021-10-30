@@ -16,7 +16,7 @@ function BookModal() {
     return (
         <div>
             <Button variant="outlined" onClick={handleClickOpen}>
-                Open dialog
+                Add book
             </Button>
             <Dialog open={open} onClose={handleClose}>
                 <BookForm />
