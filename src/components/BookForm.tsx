@@ -1,14 +1,15 @@
 import * as React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import { FormHelperText, Button } from '@mui/material';
 
 const BookForm = () => (
     <div className="books-form">
         <Formik
             initialValues={{ author: '', title: '' }}
             validationSchema={Yup.object().shape({
-                author: Yup.string().required('Required'),
-                title: Yup.string().required('Required'),
+                author: Yup.string().required('Field required!'),
+                title: Yup.string().required('Field required!'),
             })}
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
@@ -20,19 +21,29 @@ const BookForm = () => (
         >
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
                 <form onSubmit={handleSubmit}>
+                    <label htmlFor="author">Author</label>
                     <input
+                        id="author"
                         type="text"
                         name="author"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.author}
                     />
-                    {errors.author && touched.author}
-                    <input type="title" name="title" onChange={handleChange} onBlur={handleBlur} value={values.title} />
-                    {errors.title && touched.title}
-                    <button type="submit" disabled={isSubmitting}>
+                    {errors.author && touched.author && <FormHelperText error>{errors.author}</FormHelperText>}
+                    <label htmlFor="title">Title</label>
+                    <input
+                        id="title"
+                        type="text"
+                        name="title"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.title}
+                    />
+                    {errors.title && touched.title && <FormHelperText error>{errors.title}</FormHelperText>}
+                    <Button variant="contained" type="submit" disabled={isSubmitting}>
                         Submit
-                    </button>
+                    </Button>
                 </form>
             )}
         </Formik>

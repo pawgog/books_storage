@@ -1,4 +1,10 @@
-.books-form form {
+.books-form > form {
     display: flex;
     flex-direction: column;
+    & label {
+        margin: 15px 0 5px;
+    }
+    & button {
+        margin-top: 30px;
+    }
 }
