@@ -14,14 +14,14 @@ function BookModal() {
     };
 
     return (
-        <div>
+        <>
             <Button variant="outlined" onClick={handleClickOpen}>
                 Add book
             </Button>
             <Dialog open={open} onClose={handleClose}>
                 <BookForm />
             </Dialog>
-        </div>
+        </>
     );
 }
 
