@@ -1,10 +1,16 @@
 import * as React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { FormHelperText, Button } from '@mui/material';
+import { Button, IconButton, FormHelperText } from '@mui/material';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const BookForm = () => (
     <div className="books-form">
+        <div className="books-form__btn-cancel">
+            <IconButton aria-label="cancel">
+                <CancelIcon />
+            </IconButton>
+        </div>
         <Formik
             initialValues={{ author: '', title: '' }}
             validationSchema={Yup.object().shape({
