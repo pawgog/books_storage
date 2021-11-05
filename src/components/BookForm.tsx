@@ -12,10 +12,13 @@ const BookForm = () => (
             </IconButton>
         </div>
         <Formik
-            initialValues={{ author: '', title: '' }}
+            initialValues={{ author: '', title: '', publishing: '', genre: '', price: '' }}
             validationSchema={Yup.object().shape({
                 author: Yup.string().required('Field required!'),
                 title: Yup.string().required('Field required!'),
+                // publishing: Yup.string().required('Field required!'),
+                // genre: Yup.string().required('Field required!'),
+                // price: Yup.string().required('Field required!'),
             })}
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
@@ -47,6 +50,38 @@ const BookForm = () => (
                         value={values.title}
                     />
                     {errors.title && touched.title && <FormHelperText error>{errors.title}</FormHelperText>}
+                    <label htmlFor="publishing">Publishing</label>
+                    <input
+                        id="publishing"
+                        type="text"
+                        name="publishing"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.publishing}
+                    />
+                    {/* {errors.publishing && touched.publishing && (
+                        <FormHelperText error>{errors.publishing}</FormHelperText>
+                    )} */}
+                    <label htmlFor="genre">Genre</label>
+                    <input
+                        id="genre"
+                        type="text"
+                        name="genre"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.genre}
+                    />
+                    {/* {errors.genre && touched.genre && <FormHelperText error>{errors.genre}</FormHelperText>} */}
+                    <label htmlFor="price">Price (zł)</label>
+                    <input
+                        id="price"
+                        type="number"
+                        name="price"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.price}
+                    />
+                    {/* {errors.price && touched.price && <FormHelperText error>{errors.price}</FormHelperText>} */}
                     <Button variant="contained" type="submit" disabled={isSubmitting}>
                         Submit
                     </Button>
