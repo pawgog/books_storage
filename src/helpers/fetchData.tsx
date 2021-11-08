@@ -1,3 +1,7 @@
+import { Dispatch } from 'redux';
+import getBooksAction from '../redux/actions';
+import { PostActionTypes } from '../redux/types';
+
 const booksList = [
     {
         id: 1,
@@ -25,4 +29,18 @@ const booksList = [
     },
 ];
 
-export default booksList;
+function fetchBooks(): Promise<any> {
+    return new Promise((resolve, reject) => {
+        if (!booksList) {
+            return setTimeout(() => reject(new Error('Books not found')), 250);
+        }
+        return setTimeout(() => resolve(Object.values([...booksList])), 250);
+    });
+}
+
+const getBooks = () => (dispatch: Dispatch<PostActionTypes>) =>
+    fetchBooks().then((data) => {
+        dispatch(getBooksAction(data));
+    });
+
+export default getBooks;
