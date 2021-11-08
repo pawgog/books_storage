@@ -5,9 +5,9 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import booksList from '../helpers/fetchData';
+import { BooksListArray, BookObject } from '../redux/interfaces';
 
-function BooksList() {
+function BooksList({ books }: BooksListArray) {
     return (
         <TableContainer>
             <Table aria-label="books table">
@@ -21,7 +21,7 @@ function BooksList() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {booksList.map((book) => (
+                    {books.map((book: BookObject) => (
                         <TableRow key={book.id}>
                             <TableCell>{book.title}</TableCell>
                             <TableCell>{book.author}</TableCell>
