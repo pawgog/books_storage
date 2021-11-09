@@ -19,7 +19,7 @@ function BookModal() {
                 Add book
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <BookForm />
+                <BookForm handleClose={handleClose} />
             </Dialog>
         </>
     );

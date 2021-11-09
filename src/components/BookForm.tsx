@@ -4,10 +4,10 @@ import { Formik } from 'formik';
 import { Button, IconButton, FormHelperText } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 
-const BookForm = () => (
+const BookForm = ({ handleClose }: any) => (
     <div className="books-form">
         <div className="books-form__btn-cancel">
-            <IconButton aria-label="cancel">
+            <IconButton aria-label="cancel" onClick={() => handleClose()}>
                 <CancelIcon />
             </IconButton>
         </div>
