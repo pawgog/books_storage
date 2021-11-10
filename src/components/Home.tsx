@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import getBooks from './helpers/fetchData';
-import { AppState } from './redux/store';
-import BookModal from './components/BookModal';
-import BooksList from './components/BooksList';
+import getBooks from '../helpers/fetchData';
+import { AppState } from '../redux/store';
+import BookModal from './BookModal';
+import BooksList from './BooksList';
 
 function Root() {
     const dispatch = useDispatch();

@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import './styles/index.scss';
-import Root from './Root';
+import Home from './src/components/Home';
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <Root />
+            <Home />
         </Provider>
     </React.StrictMode>,
     document.getElementById('root'),
