@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import getBooks from '../helpers/fetchData';
 import { AppState } from '../redux/store';
@@ -7,10 +7,10 @@ import BooksList from './BooksList';
 
 function Root() {
     const dispatch = useDispatch();
-    const getBooksCallback = React.useCallback(() => {
+    const getBooksCallback = useCallback(() => {
         dispatch(getBooks());
     }, [dispatch]);
-    React.useEffect(() => {
+    useEffect(() => {
         getBooksCallback();
     }, [getBooksCallback]);
 
