@@ -1,4 +1,4 @@
-import { BookObject } from './interfaces';
+import { BookObject } from '../types/interfaces';
 
 export const GET_BOOKS = 'GET_BOOKS';
 

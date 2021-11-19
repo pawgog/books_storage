@@ -5,7 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { BooksListArray, BookObject } from '../redux/interfaces';
+import { BooksListArray, BookObject } from '../types/interfaces';
 
 function BooksList({ books }: BooksListArray) {
     return (

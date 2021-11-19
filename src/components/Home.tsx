@@ -20,7 +20,7 @@ function Root() {
 
     return (
         <div className="books-dashboard-body">
-            <BookModal />
+            <BookModal books={booksList} />
             <BooksList books={booksList} />
         </div>
     );
