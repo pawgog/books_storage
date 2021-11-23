@@ -43,9 +43,11 @@ export const getBooks = () => (dispatch: Dispatch<PostActionTypes>) =>
         dispatch(getBooksAction(data));
     });
 
-export const getBooksFetching = (searchValue: string) => {
+export const getBooksFetching = (searchValue: string) =>
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}`)
-        .then((response) => response.json())
-        // eslint-disable-next-line no-console
-        .then((data) => console.log(data));
-};
+        .then((response: any) => response.json())
+        .then((data) => data)
+        .catch((error) => {
+            // eslint-disable-next-line no-console
+            console.log(error);
+        });

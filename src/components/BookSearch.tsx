@@ -6,10 +6,19 @@ import { getBooksFetching } from '../helpers/fetchData';
 
 function BookSearch({ books }: BooksListArray) {
     const [searchValue, setSearchValue] = useState('');
+    const [searchBooksCollect, setSearchBooksCollect] = useState<Array<string>>(['']);
 
     useEffect(() => {
-        getBooksFetching(searchValue);
+        getBooksFetching(searchValue)
+            .then(({ items }) => setSearchBooksCollect(items))
+            .catch((error) => {
+                // eslint-disable-next-line no-console
+                console.log(error);
+            });
     }, [searchValue]);
+
+    // eslint-disable-next-line no-console
+    console.log('searchBooksCollect', searchBooksCollect);
 
     return (
         <Autocomplete
