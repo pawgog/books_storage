@@ -38,9 +38,14 @@ function fetchBooks(): Promise<any> {
     });
 }
 
-const getBooks = () => (dispatch: Dispatch<PostActionTypes>) =>
+export const getBooks = () => (dispatch: Dispatch<PostActionTypes>) =>
     fetchBooks().then((data) => {
         dispatch(getBooksAction(data));
     });
 
-export default getBooks;
+export const getBooksFetching = (searchValue: string) => {
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}`)
+        .then((response) => response.json())
+        // eslint-disable-next-line no-console
+        .then((data) => console.log(data));
+};

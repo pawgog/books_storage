@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import getBooks from '../helpers/fetchData';
+import { getBooks } from '../helpers/fetchData';
 import { AppState } from '../redux/store';
 import BookModal from './BookModal';
 import BooksList from './BooksList';
