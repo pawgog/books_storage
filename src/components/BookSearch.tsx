@@ -24,7 +24,7 @@ function BookSearch({ books }: BooksListArray) {
     console.log('searchBooksCollect', searchBooksCollect);
 
     return (
-        <Paper elevation={0}>
+        <Paper elevation={0} className="Paper-search">
             <Autocomplete
                 freeSolo
                 id="books-search"

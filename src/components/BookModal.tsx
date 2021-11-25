@@ -20,7 +20,7 @@ function BookModal({ books }: BooksListArray) {
             <Button variant="outlined" onClick={handleClickOpen}>
                 Add book
             </Button>
-            <Dialog open={open} onClose={handleClose}>
+            <Dialog open={open} onClose={handleClose} className="Dialog-modal">
                 <BookSearch books={books} />
                 <BookForm handleClose={handleClose} />
             </Dialog>

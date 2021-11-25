@@ -1,4 +1,6 @@
-.MuiPaper-root {
-    min-width: 400px;
-    padding: 50px;
+.Dialog-modal {
+    & .MuiDialog-paper {
+        min-width: 400px;
+        padding: 50px;
+    }
 }

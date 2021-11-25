@@ -1,0 +1,11 @@
+.Paper-search {
+    display: flex;
+
+    & .MuiAutocomplete-root {
+        width: 85%;
+    }
+
+    & button {
+        width: 15%;
+    }
+}
