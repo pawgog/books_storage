@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Paper from '@mui/material/Paper';
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
+import { Autocomplete, TextField, IconButton } from '@mui/material';
 import ManageSearch from '@mui/icons-material/ManageSearch';
 import { BooksListArray } from '../types/interfaces';
 import { getBooksFetching } from '../helpers/fetchData';
@@ -24,7 +21,7 @@ function BookSearch({ books }: BooksListArray) {
     console.log('searchBooksCollect', searchBooksCollect);
 
     return (
-        <Paper elevation={0} className="Paper-search">
+        <div className="books-search">
             <Autocomplete
                 freeSolo
                 id="books-search"
@@ -37,7 +34,7 @@ function BookSearch({ books }: BooksListArray) {
             <IconButton aria-label="search" color="primary">
                 <ManageSearch />
             </IconButton>
-        </Paper>
+        </div>
     );
 }
 

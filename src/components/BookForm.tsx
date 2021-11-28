@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { Button, IconButton, FormHelperText } from '@mui/material';
+import { TextField, Button, IconButton, FormHelperText } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 
 const BookForm = ({ handleClose }: any) => (
@@ -30,31 +30,28 @@ const BookForm = ({ handleClose }: any) => (
         >
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="author">Author</label>
-                    <input
+                    <TextField
                         id="author"
-                        type="text"
-                        name="author"
+                        label="Author"
+                        variant="outlined"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.author}
                     />
                     {errors.author && touched.author && <FormHelperText error>{errors.author}</FormHelperText>}
-                    <label htmlFor="title">Title</label>
-                    <input
+                    <TextField
                         id="title"
-                        type="text"
-                        name="title"
+                        label="Title"
+                        variant="outlined"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.title}
                     />
                     {errors.title && touched.title && <FormHelperText error>{errors.title}</FormHelperText>}
-                    <label htmlFor="publishing">Publishing</label>
-                    <input
+                    <TextField
                         id="publishing"
-                        type="text"
-                        name="publishing"
+                        label="Publishing"
+                        variant="outlined"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.publishing}
@@ -62,21 +59,19 @@ const BookForm = ({ handleClose }: any) => (
                     {/* {errors.publishing && touched.publishing && (
                         <FormHelperText error>{errors.publishing}</FormHelperText>
                     )} */}
-                    <label htmlFor="genre">Genre</label>
-                    <input
+                    <TextField
                         id="genre"
-                        type="text"
-                        name="genre"
+                        label="Genre"
+                        variant="outlined"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.genre}
                     />
                     {/* {errors.genre && touched.genre && <FormHelperText error>{errors.genre}</FormHelperText>} */}
-                    <label htmlFor="price">Price (zł)</label>
-                    <input
+                    <TextField
                         id="price"
-                        type="number"
-                        name="price"
+                        label="Price"
+                        variant="outlined"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.price}

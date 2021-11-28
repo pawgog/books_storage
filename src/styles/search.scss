@@ -1,4 +1,4 @@
-.Paper-search {
+.books-search {
     display: flex;
 
     & .MuiAutocomplete-root {
@@ -7,5 +7,9 @@
 
     & button {
         width: 15%;
+
+        &:hover {
+            border-radius: 0;
+        }
     }
 }
