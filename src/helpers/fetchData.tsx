@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
-import getBooksAction from '../redux/actions';
-import { PostActionTypes } from '../redux/types';
+import { getBooksAction } from '../redux/actions';
+import { BooksActionTypes } from '../redux/types';
 
 const booksList = [
     {
@@ -38,7 +38,7 @@ function fetchBooks(): Promise<any> {
     });
 }
 
-export const getBooks = () => (dispatch: Dispatch<PostActionTypes>) =>
+export const getBooks = () => (dispatch: Dispatch<BooksActionTypes>) =>
     fetchBooks().then((data) => {
         dispatch(getBooksAction(data));
     });

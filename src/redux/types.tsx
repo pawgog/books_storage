@@ -1,14 +1,18 @@
 import { BookObject } from '../types/interfaces';
-
-export const GET_BOOKS = 'GET_BOOKS';
+import { GET_BOOKS, ADD_BOOK } from './actions';
 
 export interface GetBooksPostsStateType {
     booksList: Array<BookObject>;
 }
 
-interface GetBooksPostsActionType {
+interface GetBooksActionType {
     type: typeof GET_BOOKS;
     payload: Array<BookObject>;
 }
 
-export type PostActionTypes = GetBooksPostsActionType;
+interface AddBookActionType {
+    type: typeof ADD_BOOK;
+    payload: Array<BookObject>;
+}
+
+export type BooksActionTypes = GetBooksActionType | AddBookActionType;
