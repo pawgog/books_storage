@@ -27,12 +27,9 @@ const BookForm = ({ handleClose }: any) => {
                 })}
                 onSubmit={(values, { setSubmitting }) => {
                     const setID = { id: Math.floor(Math.random() * 100) };
-                    setTimeout(() => {
-                        // eslint-disable-next-line no-alert
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                        dispatch(addBookAction([{ ...values, ...setID }]));
-                    }, 400);
+                    setSubmitting(false);
+                    dispatch(addBookAction([{ ...values, ...setID }]));
+                    handleClose();
                 }}
             >
                 {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
