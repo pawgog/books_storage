@@ -29,6 +29,12 @@ function BookSearch() {
             });
     }, [searchValue]);
 
+    const searchSelected = (selected: any) => {
+        const selectedBookDetails = searchBooksCollect.find((item) => item.book === selected.value);
+        // eslint-disable-next-line no-console
+        console.log('selected', selectedBookDetails);
+    };
+
     // eslint-disable-next-line no-console
     console.log('searchBooksCollect', searchBooksCollect);
 
@@ -41,6 +47,7 @@ function BookSearch() {
                 onInputChange={(e, inputValue) => {
                     setSearchValue(inputValue);
                 }}
+                onSelect={(event) => searchSelected(event.target)}
                 renderInput={(params: any) => <TextField {...params} label="Search books" />}
             />
             <IconButton aria-label="search" color="primary">
