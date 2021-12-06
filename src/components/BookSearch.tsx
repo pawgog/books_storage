@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Autocomplete, TextField, IconButton } from '@mui/material';
 import ManageSearch from '@mui/icons-material/ManageSearch';
-import { BooksListArray } from '../types/interfaces';
 import { getBooksFetching } from '../helpers/fetchData';
 
-function BookSearch({ books }: BooksListArray) {
+function BookSearch() {
     const [searchValue, setSearchValue] = useState('');
     const [searchBooksCollect, setSearchBooksCollect] = useState<Array<string>>(['']);
 
@@ -25,7 +24,6 @@ function BookSearch({ books }: BooksListArray) {
             <Autocomplete
                 freeSolo
                 id="books-search"
-                options={books.map((option) => option.title)}
                 onInputChange={(e, inputValue) => {
                     setSearchValue(inputValue);
                 }}

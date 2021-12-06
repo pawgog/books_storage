@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Dialog, Button } from '@mui/material';
-import { BooksListArray } from '../types/interfaces';
 import BookForm from './BookForm';
 import BookSearch from './BookSearch';
 
-function BookModal({ books }: BooksListArray) {
+function BookModal() {
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -21,7 +20,7 @@ function BookModal({ books }: BooksListArray) {
                 Add book
             </Button>
             <Dialog open={open} onClose={handleClose} className="Dialog-modal">
-                <BookSearch books={books} />
+                <BookSearch />
                 <BookForm handleClose={handleClose} />
             </Dialog>
         </>
