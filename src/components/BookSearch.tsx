@@ -10,15 +10,17 @@ export interface BookObject {
 
 function BookSearch() {
     const [searchValue, setSearchValue] = useState('');
+    const [searchBooksAllCollect, setSearchBooksAllCollect] = useState<any>([{}]);
     const [searchBooksCollect, setSearchBooksCollect] = useState<Array<BookObject>>([{ id: '', book: '' }]);
 
     useEffect(() => {
         getBooksFetching(searchValue)
             .then(({ items }) => {
+                setSearchBooksAllCollect(items);
                 const selectItems = items.map(
                     (item: { id: string, volumeInfo: { authors: string, title: string } }) => ({
                         id: item.id,
-                        book: `${item.volumeInfo.authors[0]} - ${item.volumeInfo.title}`,
+                        book: `${item.volumeInfo?.authors[0]} - ${item.volumeInfo.title}`,
                     }),
                 );
                 setSearchBooksCollect(selectItems);
@@ -31,8 +33,11 @@ function BookSearch() {
 
     const searchSelected = (selected: any) => {
         const selectedBookDetails = searchBooksCollect.find((item) => item.book === selected.value);
+        const bookAllDetails = searchBooksAllCollect?.find(
+            (book: { id: string }) => book.id === selectedBookDetails?.id,
+        );
         // eslint-disable-next-line no-console
-        console.log('selected', selectedBookDetails);
+        console.log('selected', selectedBookDetails, bookAllDetails);
     };
 
     // eslint-disable-next-line no-console
