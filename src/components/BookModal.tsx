@@ -17,10 +17,10 @@ function BookModal() {
 
     const getBookDetails = (book: any) => {
         const objectBook = {
-            author: book?.volumeInfo?.authors[0] || '',
-            title: book?.volumeInfo?.title || '',
-            publishing: book?.volumeInfo?.publisher || '',
-            genre: book?.volumeInfo?.categories[0] || '',
+            author: book.volumeInfo?.authors ? book.volumeInfo?.authors[0] : '',
+            title: book.volumeInfo?.title || '',
+            publishing: book.volumeInfo?.publisher || '',
+            genre: book.volumeInfo?.categories ? book.volumeInfo?.categories[0] : '',
             price: '',
         };
         setBookDetails(objectBook);
