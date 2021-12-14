@@ -6,7 +6,7 @@ import { TextField, Button, IconButton, FormHelperText } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { addBookAction } from '../redux/actions';
 
-const BookForm = ({ handleClose }: any) => {
+const BookForm = ({ handleClose, bookDetails }: any) => {
     const dispatch = useDispatch();
 
     return (
@@ -17,7 +17,8 @@ const BookForm = ({ handleClose }: any) => {
                 </IconButton>
             </div>
             <Formik
-                initialValues={{ author: '', title: '', publishing: '', genre: '', price: '' }}
+                initialValues={bookDetails}
+                enableReinitialize
                 validationSchema={Yup.object().shape({
                     author: Yup.string().required('Field required!'),
                     title: Yup.string().required('Field required!'),

@@ -5,6 +5,7 @@ import BookSearch from './BookSearch';
 
 function BookModal() {
     const [open, setOpen] = useState(false);
+    const [bookDetails, setBookDetails] = useState({ author: '', title: '', publishing: '', genre: '', price: '' });
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -14,14 +15,25 @@ function BookModal() {
         setOpen(false);
     };
 
+    const getBookDetails = (book: any) => {
+        const objectBook = {
+            author: book?.volumeInfo?.authors[0] || '',
+            title: book?.volumeInfo?.title || '',
+            publishing: book?.volumeInfo?.publisher || '',
+            genre: book?.volumeInfo?.categories[0] || '',
+            price: '',
+        };
+        setBookDetails(objectBook);
+    };
+
     return (
         <>
             <Button variant="outlined" onClick={handleClickOpen}>
                 Add book
             </Button>
             <Dialog open={open} onClose={handleClose} className="Dialog-modal">
-                <BookSearch />
-                <BookForm handleClose={handleClose} />
+                <BookSearch getBookDetails={getBookDetails} />
+                <BookForm bookDetails={bookDetails} handleClose={handleClose} />
             </Dialog>
         </>
     );

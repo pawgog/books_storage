@@ -8,7 +8,7 @@ export interface BookObject {
     book: string;
 }
 
-function BookSearch() {
+function BookSearch({ getBookDetails }: any) {
     const [searchValue, setSearchValue] = useState('');
     const [searchBooksAllCollect, setSearchBooksAllCollect] = useState<any>([{}]);
     const [searchBooksCollect, setSearchBooksCollect] = useState<Array<BookObject>>([{ id: '', book: '' }]);
@@ -36,6 +36,7 @@ function BookSearch() {
         const bookAllDetails = searchBooksAllCollect?.find(
             (book: { id: string }) => book.id === selectedBookDetails?.id,
         );
+        getBookDetails(bookAllDetails);
         // eslint-disable-next-line no-console
         console.log('selected', selectedBookDetails, bookAllDetails);
     };
