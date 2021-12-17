@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Autocomplete, MenuItem, TextField, IconButton } from '@mui/material';
 import ManageSearch from '@mui/icons-material/ManageSearch';
-import { getBooksFetching } from '../helpers/fetchData';
+import { getBooksSearching } from '../helpers/fetchData';
 
 export interface BookObject {
     id: string;
@@ -16,7 +16,7 @@ function BookSearch({ getBookDetails }: any) {
 
     useEffect(() => {
         if (searchValue) {
-            getBooksFetching(searchValue)
+            getBooksSearching(searchValue)
                 .then(({ items }) => {
                     setSearchBooksAllCollect(items);
                     const selectItems = items.map(
