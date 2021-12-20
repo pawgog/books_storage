@@ -3,12 +3,15 @@ import { Dialog, Button } from '@mui/material';
 import BookForm from './BookForm';
 import BookSearch from './BookSearch';
 
+const bookSchema = { author: '', title: '', publishing: '', genre: '', price: '' };
+
 function BookModal() {
     const [open, setOpen] = useState(false);
-    const [bookDetails, setBookDetails] = useState({ author: '', title: '', publishing: '', genre: '', price: '' });
+    const [bookDetails, setBookDetails] = useState(bookSchema);
 
     const handleClickOpen = () => {
         setOpen(true);
+        setBookDetails(bookSchema);
     };
 
     const handleClose = () => {

@@ -29,6 +29,7 @@ function BookSearch({ getBookDetails }: any) {
                             }${item.volumeInfo?.title}`,
                         }),
                     );
+                    setOpenSuggestions(true);
                     setSearchBooksCollect(selectItems);
                 })
                 .catch((error) => {
