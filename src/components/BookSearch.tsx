@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Autocomplete, MenuItem, TextField, IconButton } from '@mui/material';
-import ManageSearch from '@mui/icons-material/ManageSearch';
+import { Autocomplete, MenuItem, TextField } from '@mui/material';
 import { getBooksSearching } from '../helpers/fetchData';
 
 export interface BookObject {
@@ -71,9 +70,6 @@ function BookSearch({ getBookDetails }: any) {
                 )}
                 renderInput={(params: any) => <TextField {...params} label="Search books" />}
             />
-            <IconButton aria-label="search" color="primary">
-                <ManageSearch />
-            </IconButton>
         </div>
     );
 }
