@@ -43,7 +43,7 @@ export const getBooks = () => (dispatch: Dispatch<BooksActionTypes>) =>
         dispatch(getBooksAction(data));
     });
 
-export const getBooksFetching = (searchValue: string) =>
+export const getBooksSearching = (searchValue: string) =>
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}`)
         .then((response: any) => response.json())
         .then((data) => data)
