@@ -10,3 +10,11 @@ export interface BookObject {
     genre: string;
     price: number;
 }
+
+export interface BookSchema {
+    author: string;
+    title: string;
+    publishing: string;
+    genre: string;
+    price: string;
+}
