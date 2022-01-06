@@ -24,7 +24,7 @@ function BookModal({ open, bookDetails, handleBookDetails, handleCloseModal }: B
 
     return (
         <>
-            <Dialog open={open} onClose={handleCloseModal} className="Dialog-modal">
+            <Dialog open={open} onClose={handleCloseModal} className="dialog-modal">
                 <BookSearch getBookDetails={getBookDetails} />
                 <BookForm bookDetails={bookDetails} handleClose={handleCloseModal} />
             </Dialog>
