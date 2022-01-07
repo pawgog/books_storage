@@ -9,7 +9,7 @@ import { BookSchema } from '../types/interfaces';
 
 const bookSchemaInit = { author: '', title: '', publishing: '', genre: '', price: '' };
 
-function Root() {
+function Home() {
     const [open, setOpen] = useState(false);
     const [bookDetails, setBookDetails] = useState(bookSchemaInit);
 
@@ -55,4 +55,4 @@ function Root() {
     );
 }
 
-export default Root;
+export default Home;
