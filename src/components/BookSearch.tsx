@@ -8,8 +8,8 @@ export interface BookObject {
 }
 
 function BookSearch({ getBookDetails }: any) {
-    const [searchValue, setSearchValue] = useState('');
-    const [openSuggestions, setOpenSuggestions] = useState(false);
+    const [searchValue, setSearchValue] = useState<string>('');
+    const [openSuggestions, setOpenSuggestions] = useState<boolean>(false);
     const [searchBooksAllCollect, setSearchBooksAllCollect] = useState<any>([{}]);
     const [searchBooksCollect, setSearchBooksCollect] = useState<Array<BookObject>>([{ id: '', book: '' }]);
 
