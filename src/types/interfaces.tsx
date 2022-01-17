@@ -1,8 +1,8 @@
-export interface BooksListArray {
-    books: Array<BookObject>;
+export interface IBooksListArray {
+    books: Array<IBookObject>;
 }
 
-export interface BookObject {
+export interface IBookObject {
     id: number;
     title: string;
     author: string;
@@ -11,7 +11,7 @@ export interface BookObject {
     price: number;
 }
 
-export interface BookSchema {
+export interface IBookSchema {
     author: string;
     title: string;
     publishing: string;
@@ -19,7 +19,7 @@ export interface BookSchema {
     price: number;
 }
 
-export interface BookObjectAPI {
+export interface IBookObjectAPI {
     kind: string;
     id: string;
     etag: string;

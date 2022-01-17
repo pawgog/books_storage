@@ -5,11 +5,11 @@ import { Formik } from 'formik';
 import { TextField, Button, IconButton, FormHelperText } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { addBookAction } from '../redux/actions';
-import { BookSchema } from '../types/interfaces';
+import { IBookSchema } from '../types/interfaces';
 
 export interface TBookForm {
     handleClose: Function;
-    bookDetails: BookSchema;
+    bookDetails: IBookSchema;
 }
 
 const BookForm = ({ handleClose, bookDetails }: TBookForm) => {

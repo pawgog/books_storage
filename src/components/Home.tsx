@@ -5,7 +5,7 @@ import { AppState } from '../redux/store';
 import BookMenu from './BookMenu';
 import BookModal from './BookModal';
 import BooksList from './BooksList';
-import { BookSchema } from '../types/interfaces';
+import { IBookSchema } from '../types/interfaces';
 
 const bookSchemaInit = { author: '', title: '', publishing: '', genre: '', price: 0 };
 
@@ -23,7 +23,7 @@ function Home() {
 
     const booksList = useSelector((state: AppState) => state.booksList);
 
-    const handleBookDetails = (bookSchema: BookSchema): void => {
+    const handleBookDetails = (bookSchema: IBookSchema): void => {
         setBookDetails(bookSchema);
     };
 

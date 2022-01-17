@@ -1,18 +1,18 @@
-import { BookObject } from '../types/interfaces';
+import { IBookObject } from '../types/interfaces';
 import { GET_BOOKS, ADD_BOOK } from './actions';
 
 export interface GetBooksPostsStateType {
-    booksList: Array<BookObject>;
+    booksList: Array<IBookObject>;
 }
 
 interface GetBooksActionType {
     type: typeof GET_BOOKS;
-    payload: Array<BookObject>;
+    payload: Array<IBookObject>;
 }
 
 interface AddBookActionType {
     type: typeof ADD_BOOK;
-    payload: Array<BookObject>;
+    payload: Array<IBookObject>;
 }
 
 export type BooksActionTypes = GetBooksActionType | AddBookActionType;

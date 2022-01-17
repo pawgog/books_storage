@@ -2,17 +2,17 @@ import React from 'react';
 import { Dialog } from '@mui/material';
 import BookForm from './BookForm';
 import BookSearch from './BookSearch';
-import { BookSchema, BookObjectAPI } from '../types/interfaces';
+import { IBookSchema, IBookObjectAPI } from '../types/interfaces';
 
 interface BookModalType {
     open: boolean;
-    bookDetails: BookSchema;
+    bookDetails: IBookSchema;
     handleBookDetails: Function;
     handleCloseModal: React.MouseEventHandler<HTMLButtonElement>;
 }
 function BookModal({ open, bookDetails, handleBookDetails, handleCloseModal }: BookModalType) {
-    const getBookDetails = (book: BookObjectAPI) => {
-        const objectBook: BookSchema = {
+    const getBookDetails = (book: IBookObjectAPI) => {
+        const objectBook: IBookSchema = {
             author: book.volumeInfo?.authors ? book.volumeInfo?.authors[0] : '',
             title: book.volumeInfo?.title || '',
             publishing: book.volumeInfo?.publisher || '',
