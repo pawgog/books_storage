@@ -16,7 +16,7 @@ export interface BookSchema {
     title: string;
     publishing: string;
     genre: string;
-    price: string;
+    price: number;
 }
 
 export interface BookObjectAPI {

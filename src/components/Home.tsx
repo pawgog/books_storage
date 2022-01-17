@@ -7,7 +7,7 @@ import BookModal from './BookModal';
 import BooksList from './BooksList';
 import { BookSchema } from '../types/interfaces';
 
-const bookSchemaInit = { author: '', title: '', publishing: '', genre: '', price: '' };
+const bookSchemaInit = { author: '', title: '', publishing: '', genre: '', price: 0 };
 
 function Home() {
     const [open, setOpen] = useState(false);

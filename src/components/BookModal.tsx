@@ -17,7 +17,7 @@ function BookModal({ open, bookDetails, handleBookDetails, handleCloseModal }: B
             title: book.volumeInfo?.title || '',
             publishing: book.volumeInfo?.publisher || '',
             genre: book.volumeInfo?.categories ? book.volumeInfo?.categories[0] : '',
-            price: '',
+            price: 0,
         };
         handleBookDetails(objectBook);
     };

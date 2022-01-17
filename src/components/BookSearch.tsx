@@ -7,10 +7,14 @@ export interface BookObject {
     book: string;
 }
 
-function BookSearch({ getBookDetails }: any) {
+export interface TBookSearch {
+    getBookDetails: (book: any) => void;
+}
+
+function BookSearch({ getBookDetails }: TBookSearch) {
     const [searchValue, setSearchValue] = useState<string>('');
     const [openSuggestions, setOpenSuggestions] = useState<boolean>(false);
-    const [searchBooksAllCollect, setSearchBooksAllCollect] = useState<any>([{}]);
+    const [searchBooksAllCollect, setSearchBooksAllCollect] = useState<Array<BookObject>>([{ id: '', book: '' }]);
     const [searchBooksCollect, setSearchBooksCollect] = useState<Array<BookObject>>([{ id: '', book: '' }]);
 
     useEffect(() => {
@@ -41,7 +45,7 @@ function BookSearch({ getBookDetails }: any) {
     const searchSelected = (selected: any) => {
         setOpenSuggestions(false);
         const selectedBookDetails = searchBooksCollect.find((item) => item.book === selected);
-        const bookAllDetails = searchBooksAllCollect?.find(
+        const bookAllDetails = searchBooksAllCollect.find(
             (book: { id: string }) => book.id === selectedBookDetails?.id,
         );
         getBookDetails(bookAllDetails);

@@ -5,8 +5,14 @@ import { Formik } from 'formik';
 import { TextField, Button, IconButton, FormHelperText } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { addBookAction } from '../redux/actions';
+import { BookSchema } from '../types/interfaces';
 
-const BookForm = ({ handleClose, bookDetails }: any) => {
+export interface TBookForm {
+    handleClose: Function;
+    bookDetails: BookSchema;
+}
+
+const BookForm = ({ handleClose, bookDetails }: TBookForm) => {
     const dispatch = useDispatch();
 
     return (

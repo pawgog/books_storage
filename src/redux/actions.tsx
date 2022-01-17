@@ -9,7 +9,7 @@ export const getBooksAction = (booksList: Array<BookObject>): BooksActionTypes =
     payload: booksList,
 });
 
-export const addBookAction = (payload: any) => ({
+export const addBookAction = (payload: BookObject[]) => ({
     type: ADD_BOOK,
     payload,
 });
