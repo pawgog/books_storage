@@ -1,16 +1,27 @@
-import * as React from 'react';
+import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { BooksListArray, BookObject } from '../types/interfaces';
+import useSortableData from '../helpers/hooks';
+import { IBooksListArray, IBookObject } from '../types/interfaces';
 
-function BooksList({ books }: BooksListArray) {
+function BooksList({ books }: IBooksListArray) {
+    const { booksSorted, requestSort, sortConfig } = useSortableData(books);
+
     return (
         <TableContainer>
             <Table aria-label="books table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Title</TableCell>
-                        <TableCell>Author</TableCell>
+                        <TableCell key="title" className={sortConfig.key === 'title' ? sortConfig.direction : 'asc'}>
+                            <button type="button" onClick={() => requestSort('title')}>
+                                Title
+                            </button>
+                        </TableCell>
+                        <TableCell key="author" className={sortConfig.key === 'author' ? sortConfig.direction : 'asc'}>
+                            <button type="button" onClick={() => requestSort('author')}>
+                                Author
+                            </button>
+                        </TableCell>
                         <TableCell>Publishing House</TableCell>
                         <TableCell>Genre</TableCell>
                         <TableCell>Price</TableCell>
@@ -18,7 +29,7 @@ function BooksList({ books }: BooksListArray) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {books.map((book: BookObject) => (
+                    {booksSorted.map((book: IBookObject) => (
                         <TableRow key={book.id}>
                             <TableCell>{book.title}</TableCell>
                             <TableCell>{book.author}</TableCell>
