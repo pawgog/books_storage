@@ -1,7 +1,8 @@
 import { useState, useMemo } from 'react';
+import { IBookObject } from '../types/interfaces';
 
-const useSortableData = (booksSorted: any, config = null) => {
-    const [sortConfig, setSortConfig] = useState<any>(config);
+const useSortableData = (booksSorted: Array<IBookObject> | any) => {
+    const [sortConfig, setSortConfig] = useState<any>(null);
 
     const sortedItems = useMemo(() => {
         const sortableItems = [...booksSorted];
@@ -19,7 +20,7 @@ const useSortableData = (booksSorted: any, config = null) => {
         return sortableItems;
     }, [booksSorted, sortConfig]);
 
-    const requestSort = (key: any) => {
+    const requestSort = (key: string) => {
         let direction = 'asc';
         if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
             direction = 'desc';
