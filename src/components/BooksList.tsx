@@ -12,12 +12,20 @@ function BooksList({ books }: IBooksListArray) {
             <Table aria-label="books table">
                 <TableHead>
                     <TableRow>
-                        <TableCell key="title" className={sortConfig.key === 'title' ? sortConfig.direction : 'asc'}>
+                        <TableCell
+                            key="title"
+                            className={sortConfig !== null && sortConfig.key === 'title' ? sortConfig.direction : 'asc'}
+                        >
                             <button type="button" onClick={() => requestSort('title')}>
                                 Title
                             </button>
                         </TableCell>
-                        <TableCell key="author" className={sortConfig.key === 'author' ? sortConfig.direction : 'asc'}>
+                        <TableCell
+                            key="author"
+                            className={
+                                sortConfig !== null && sortConfig.key === 'author' ? sortConfig.direction : 'asc'
+                            }
+                        >
                             <button type="button" onClick={() => requestSort('author')}>
                                 Author
                             </button>

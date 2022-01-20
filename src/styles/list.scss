@@ -12,5 +12,15 @@
 
     & .MuiTableRow-root th {
         font-weight: 600;
+
+        & > button {
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+        }
     }
 }
