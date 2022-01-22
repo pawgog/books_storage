@@ -30,9 +30,32 @@ function BooksList({ books }: IBooksListArray) {
                                 Author
                             </button>
                         </TableCell>
-                        <TableCell>Publishing House</TableCell>
-                        <TableCell>Genre</TableCell>
-                        <TableCell>Price</TableCell>
+                        <TableCell
+                            key="publishing"
+                            className={
+                                sortConfig !== null && sortConfig.key === 'publishing' ? sortConfig.direction : 'asc'
+                            }
+                        >
+                            <button type="button" onClick={() => requestSort('publishing')}>
+                                Publishing House
+                            </button>
+                        </TableCell>
+                        <TableCell
+                            key="genre"
+                            className={sortConfig !== null && sortConfig.key === 'genre' ? sortConfig.direction : 'asc'}
+                        >
+                            <button type="button" onClick={() => requestSort('genre')}>
+                                Genre
+                            </button>
+                        </TableCell>
+                        <TableCell
+                            key="price"
+                            className={sortConfig !== null && sortConfig.key === 'price' ? sortConfig.direction : 'asc'}
+                        >
+                            <button type="button" onClick={() => requestSort('price')}>
+                                Price
+                            </button>
+                        </TableCell>
                         <TableCell />
                     </TableRow>
                 </TableHead>
