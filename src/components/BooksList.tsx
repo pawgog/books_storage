@@ -6,52 +6,35 @@ import { IBooksListArray, IBookObject } from '../types/interfaces';
 
 function BooksList({ books }: IBooksListArray) {
     const { booksSorted, requestSort, sortConfig } = useSortableData(books);
+    const detectSortDirection = (val: string) =>
+        sortConfig !== null && sortConfig.key === val ? sortConfig.direction : 'asc';
 
     return (
         <TableContainer>
             <Table aria-label="books table">
                 <TableHead>
                     <TableRow>
-                        <TableCell
-                            key="title"
-                            className={sortConfig !== null && sortConfig.key === 'title' ? sortConfig.direction : 'asc'}
-                        >
+                        <TableCell key="title" className={detectSortDirection('title')}>
                             <button type="button" onClick={() => requestSort('title')}>
                                 Title
                             </button>
                         </TableCell>
-                        <TableCell
-                            key="author"
-                            className={
-                                sortConfig !== null && sortConfig.key === 'author' ? sortConfig.direction : 'asc'
-                            }
-                        >
+                        <TableCell key="author" className={detectSortDirection('author')}>
                             <button type="button" onClick={() => requestSort('author')}>
                                 Author
                             </button>
                         </TableCell>
-                        <TableCell
-                            key="publishing"
-                            className={
-                                sortConfig !== null && sortConfig.key === 'publishing' ? sortConfig.direction : 'asc'
-                            }
-                        >
+                        <TableCell key="publishing" className={detectSortDirection('publishing')}>
                             <button type="button" onClick={() => requestSort('publishing')}>
                                 Publishing House
                             </button>
                         </TableCell>
-                        <TableCell
-                            key="genre"
-                            className={sortConfig !== null && sortConfig.key === 'genre' ? sortConfig.direction : 'asc'}
-                        >
+                        <TableCell key="genre" className={detectSortDirection('genre')}>
                             <button type="button" onClick={() => requestSort('genre')}>
                                 Genre
                             </button>
                         </TableCell>
-                        <TableCell
-                            key="price"
-                            className={sortConfig !== null && sortConfig.key === 'price' ? sortConfig.direction : 'asc'}
-                        >
+                        <TableCell key="price" className={detectSortDirection('price')}>
                             <button type="button" onClick={() => requestSort('price')}>
                                 Price
                             </button>
