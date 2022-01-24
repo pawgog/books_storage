@@ -13,6 +13,16 @@
     & .MuiTableRow-root th {
         font-weight: 600;
 
+        &[class*='asc']::after {
+            @include sorting-list;
+            transform: rotate(-90deg);
+        }
+
+        &[class*='desc']::after {
+            @include sorting-list;
+            transform: rotate(90deg);
+        }
+
         & > button {
             background: none;
             color: inherit;

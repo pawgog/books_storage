@@ -5,3 +5,13 @@ $grey: #8b8a8a;
 
 //properties
 $backgroundColor: #9b9b9b;
+
+@mixin sorting-list {
+    content: '';
+    background: url('https://img.icons8.com/ios/24/000000/arrow--v1.png');
+    background-size: cover;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin: 2px 0 0 5px;
+}
