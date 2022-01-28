@@ -1,5 +1,6 @@
 import { GET_BOOKS, ADD_BOOK, DELETE_BOOK } from './actions';
 import { GetBooksPostsStateType, BooksActionTypes } from './types';
+import { IBookObject } from '../types/interfaces';
 
 const initialStateGetPosts: GetBooksPostsStateType = {
     booksList: [
@@ -29,7 +30,7 @@ const books = (state = initialStateGetPosts, action: BooksActionTypes): GetBooks
         case DELETE_BOOK:
             return {
                 ...state,
-                booksList: [...state.booksList.filter((item: any) => item.id !== action.payload)],
+                booksList: [...state.booksList.filter((item: IBookObject) => item.id !== Number(action.payload))],
             };
         default:
             return state;

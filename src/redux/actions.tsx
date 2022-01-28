@@ -15,7 +15,7 @@ export const addBookAction = (payload: IBookObject[]) => ({
     payload,
 });
 
-export const deleteBookAction = (payload: any) => ({
+export const deleteBookAction = (payload: string) => ({
     type: DELETE_BOOK,
     payload,
 });
