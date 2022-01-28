@@ -1,13 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { deleteBookAction } from '../redux/actions';
 import useSortableData from '../helpers/hooks';
 import { IBooksListArray, IBookObject } from '../types/interfaces';
 
 function BooksList({ books }: IBooksListArray) {
+    const dispatch = useDispatch();
     const { booksSorted, requestSort, sortConfig } = useSortableData(books);
     const detectSortDirection = (val: string) =>
         sortConfig !== null && sortConfig.key === val ? sortConfig.direction : 'asc';
+
+    const deleteBook = (bookId: any) => dispatch(deleteBookAction(bookId));
 
     return (
         <TableContainer>
@@ -54,8 +59,7 @@ function BooksList({ books }: IBooksListArray) {
                                 <IconButton
                                     aria-label="delete"
                                     onClick={() => {
-                                        // eslint-disable-next-line no-alert
-                                        alert('delete item');
+                                        deleteBook(book.id);
                                     }}
                                 >
                                     <DeleteIcon />

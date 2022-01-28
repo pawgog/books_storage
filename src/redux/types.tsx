@@ -1,5 +1,5 @@
 import { IBookObject } from '../types/interfaces';
-import { GET_BOOKS, ADD_BOOK } from './actions';
+import { GET_BOOKS, ADD_BOOK, DELETE_BOOK } from './actions';
 
 export interface GetBooksPostsStateType {
     booksList: Array<IBookObject>;
@@ -15,4 +15,9 @@ interface AddBookActionType {
     payload: Array<IBookObject>;
 }
 
-export type BooksActionTypes = GetBooksActionType | AddBookActionType;
+interface DeleteBookActionType {
+    type: typeof DELETE_BOOK;
+    payload: string;
+}
+
+export type BooksActionTypes = GetBooksActionType | AddBookActionType | DeleteBookActionType;
