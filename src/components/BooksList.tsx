@@ -1,18 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ConfirmModal from './ConfirmModal';
 import { deleteBookAction } from '../redux/actions';
 import useSortableData from '../helpers/hooks';
 import { IBooksListArray, IBookObject } from '../types/interfaces';
 
+const staticText = {
+    confirmMessage: 'Would you like to delete book item?',
+};
+
 function BooksList({ books }: IBooksListArray) {
     const dispatch = useDispatch();
+    const [isOpen, setOpenConfirm] = useState(false);
+    const [bookIdSelected, selectBook] = useState(0);
     const { booksSorted, requestSort, sortConfig } = useSortableData(books);
     const detectSortDirection = (val: string) =>
         sortConfig !== null && sortConfig.key === val ? sortConfig.direction : 'asc';
 
-    const deleteBook = (bookId: any) => dispatch(deleteBookAction(bookId));
+    const deleteBook = (bookId: any) => {
+        dispatch(deleteBookAction(bookId));
+    };
+
+    const confirmFnc = (result: boolean) => {
+        if (result) {
+            deleteBook(bookIdSelected);
+            selectBook(0);
+            setOpenConfirm(false);
+        }
+        selectBook(0);
+        setOpenConfirm(false);
+    };
+
+    const openConfirm = () => {
+        setOpenConfirm(true);
+    };
+
+    const closeConfirm = () => {
+        setOpenConfirm(false);
+    };
 
     return (
         <TableContainer>
@@ -59,11 +86,18 @@ function BooksList({ books }: IBooksListArray) {
                                 <IconButton
                                     aria-label="delete"
                                     onClick={() => {
-                                        deleteBook(book.id);
+                                        selectBook(book.id);
+                                        openConfirm();
                                     }}
                                 >
                                     <DeleteIcon />
                                 </IconButton>
+                                <ConfirmModal
+                                    confirmMessage={staticText.confirmMessage}
+                                    confirmResultFnc={confirmFnc}
+                                    handleCloseConfirm={closeConfirm}
+                                    isOpen={isOpen}
+                                />
                             </TableCell>
                         </TableRow>
                     ))}
