@@ -6,8 +6,14 @@ function ConfirmModal({ confirmMessage, confirmResultFnc, handleCloseConfirm, is
         <>
             <Dialog open={isOpen} onClose={handleCloseConfirm} className="dialog-modal">
                 <Typography variant="h5">{confirmMessage}</Typography>
-                <Button onClick={() => confirmResultFnc(true)}>Yes</Button>
-                <Button onClick={() => confirmResultFnc(false)}>No</Button>
+                <div className="confirm-modal__content">
+                    <Button variant="outlined" onClick={() => confirmResultFnc(true)}>
+                        Yes
+                    </Button>
+                    <Button variant="outlined" onClick={() => confirmResultFnc(false)}>
+                        No
+                    </Button>
+                </div>
             </Dialog>
         </>
     );
