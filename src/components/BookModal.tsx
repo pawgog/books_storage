@@ -10,6 +10,7 @@ interface BookModalType {
     handleBookDetails: Function;
     handleCloseModal: React.MouseEventHandler<HTMLButtonElement>;
 }
+
 function BookModal({ open, bookDetails, handleBookDetails, handleCloseModal }: BookModalType) {
     const getBookDetails = (book: IBookObjectAPI) => {
         const objectBook: IBookSchema = {

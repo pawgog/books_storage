@@ -1,7 +1,14 @@
 import React from 'react';
 import { Dialog, Button, Typography } from '@mui/material';
 
-function ConfirmModal({ confirmMessage, confirmResultFnc, handleCloseConfirm, isOpen }: any) {
+interface ConfirmModalType {
+    confirmMessage: string;
+    confirmResultFnc: Function;
+    handleCloseConfirm: React.MouseEventHandler<HTMLButtonElement>;
+    isOpen: boolean;
+}
+
+function ConfirmModal({ confirmMessage, confirmResultFnc, handleCloseConfirm, isOpen }: ConfirmModalType) {
     return (
         <>
             <Dialog open={isOpen} onClose={handleCloseConfirm} className="dialog-modal">

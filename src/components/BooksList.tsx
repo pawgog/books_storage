@@ -19,7 +19,7 @@ function BooksList({ books }: IBooksListArray) {
     const detectSortDirection = (val: string) =>
         sortConfig !== null && sortConfig.key === val ? sortConfig.direction : 'asc';
 
-    const deleteBook = (bookId: any) => {
+    const deleteBook = (bookId: number) => {
         dispatch(deleteBookAction(bookId));
     };
 
