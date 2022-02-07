@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ConfirmModal from './ConfirmModal';
 import { deleteBookAction } from '../redux/actions';
@@ -11,7 +12,7 @@ const staticText = {
     confirmMessage: 'Would you like to delete book item?',
 };
 
-function BooksList({ books }: IBooksListArray) {
+function BooksList({ books, handleBookEdit }: IBooksListArray) {
     const dispatch = useDispatch();
     const [isOpen, setOpenConfirm] = useState(false);
     const [bookIdSelected, selectBook] = useState(0);
@@ -72,6 +73,7 @@ function BooksList({ books }: IBooksListArray) {
                             </button>
                         </TableCell>
                         <TableCell />
+                        <TableCell />
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -82,6 +84,16 @@ function BooksList({ books }: IBooksListArray) {
                             <TableCell>{book.publishing}</TableCell>
                             <TableCell>{book.genre}</TableCell>
                             <TableCell>{book.price}</TableCell>
+                            <TableCell>
+                                <IconButton
+                                    aria-label="edit"
+                                    onClick={() => {
+                                        handleBookEdit(book);
+                                    }}
+                                >
+                                    <EditIcon />
+                                </IconButton>
+                            </TableCell>
                             <TableCell>
                                 <IconButton
                                     aria-label="delete"

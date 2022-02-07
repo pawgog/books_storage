@@ -1,5 +1,6 @@
 export interface IBooksListArray {
     books: Array<IBookObject>;
+    handleBookEdit: Function;
 }
 
 export interface IBookObject {

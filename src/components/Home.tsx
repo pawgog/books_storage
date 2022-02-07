@@ -27,6 +27,11 @@ function Home() {
         setBookDetails(bookSchema);
     };
 
+    const handleBookEdit = (book: any) => {
+        setOpen(true);
+        handleBookDetails(book);
+    };
+
     const handleOpen = () => {
         setOpen(true);
         handleBookDetails(bookSchemaInit);
@@ -49,7 +54,7 @@ function Home() {
                     handleBookDetails={handleBookDetails}
                     handleCloseModal={handleClose}
                 />
-                <BooksList books={booksList} />
+                <BooksList books={booksList} handleBookEdit={handleBookEdit} />
             </div>
         </>
     );
