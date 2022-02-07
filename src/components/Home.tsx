@@ -5,7 +5,7 @@ import { AppState } from '../redux/store';
 import BookMenu from './BookMenu';
 import BookModal from './BookModal';
 import BooksList from './BooksList';
-import { IBookSchema } from '../types/interfaces';
+import { IBookSchema, IBookObject } from '../types/interfaces';
 
 const bookSchemaInit = { author: '', title: '', publishing: '', genre: '', price: 0 };
 
@@ -27,7 +27,7 @@ function Home() {
         setBookDetails(bookSchema);
     };
 
-    const handleBookEdit = (book: any) => {
+    const handleBookEdit = (book: IBookObject) => {
         setOpen(true);
         handleBookDetails(book);
     };
