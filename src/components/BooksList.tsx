@@ -34,7 +34,8 @@ function BooksList({ books, handleBookEdit }: IBooksListArray) {
         setOpenConfirm(false);
     };
 
-    const openConfirm = () => {
+    const openConfirm = (bookId: number) => {
+        selectBook(bookId);
         setOpenConfirm(true);
     };
 
@@ -85,23 +86,12 @@ function BooksList({ books, handleBookEdit }: IBooksListArray) {
                             <TableCell>{book.genre}</TableCell>
                             <TableCell>{book.price}</TableCell>
                             <TableCell>
-                                <IconButton
-                                    aria-label="edit"
-                                    onClick={() => {
-                                        handleBookEdit(book);
-                                    }}
-                                >
+                                <IconButton aria-label="edit" onClick={() => handleBookEdit(book)}>
                                     <EditIcon />
                                 </IconButton>
                             </TableCell>
                             <TableCell>
-                                <IconButton
-                                    aria-label="delete"
-                                    onClick={() => {
-                                        selectBook(book.id);
-                                        openConfirm();
-                                    }}
-                                >
+                                <IconButton aria-label="delete" onClick={() => openConfirm(book.id)}>
                                     <DeleteIcon />
                                 </IconButton>
                                 <ConfirmModal
