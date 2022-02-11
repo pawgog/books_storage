@@ -10,9 +10,10 @@ import { IBookSchema } from '../types/interfaces';
 export interface TBookForm {
     handleClose: Function;
     bookDetails: IBookSchema;
+    isEditForm: boolean;
 }
 
-const BookForm = ({ handleClose, bookDetails }: TBookForm) => {
+const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
     const dispatch = useDispatch();
 
     return (
@@ -35,7 +36,12 @@ const BookForm = ({ handleClose, bookDetails }: TBookForm) => {
                 onSubmit={(values, { setSubmitting }) => {
                     const setID = { id: Math.floor(Math.random() * 100) };
                     setSubmitting(false);
-                    dispatch(addBookAction([{ ...values, ...setID }]));
+                    if (isEditForm) {
+                        // eslint-disable-next-line no-alert
+                        alert('Dispatch edit book action in form.');
+                    } else {
+                        dispatch(addBookAction([{ ...values, ...setID }]));
+                    }
                     handleClose();
                 }}
             >

@@ -12,6 +12,7 @@ const bookSchemaInit = { author: '', title: '', publishing: '', genre: '', price
 function Home() {
     const [open, setOpen] = useState(false);
     const [bookDetails, setBookDetails] = useState(bookSchemaInit);
+    const [isEditForm, setEditForm] = useState(false);
 
     const dispatch = useDispatch();
     const getBooksCallback = useCallback(() => {
@@ -28,11 +29,13 @@ function Home() {
     };
 
     const handleBookEdit = (book: IBookObject) => {
+        setEditForm(true);
         setOpen(true);
         handleBookDetails(book);
     };
 
     const handleOpen = () => {
+        setEditForm(false);
         setOpen(true);
         handleBookDetails(bookSchemaInit);
     };
@@ -50,6 +53,7 @@ function Home() {
             <div className="books-dashboard-body">
                 <BookModal
                     open={open}
+                    isEditForm={isEditForm}
                     bookDetails={bookDetails}
                     handleBookDetails={handleBookDetails}
                     handleCloseModal={handleClose}

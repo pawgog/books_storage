@@ -6,12 +6,13 @@ import { IBookSchema, IBookObjectAPI } from '../types/interfaces';
 
 interface BookModalType {
     open: boolean;
+    isEditForm: boolean;
     bookDetails: IBookSchema;
     handleBookDetails: Function;
     handleCloseModal: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-function BookModal({ open, bookDetails, handleBookDetails, handleCloseModal }: BookModalType) {
+function BookModal({ open, isEditForm, bookDetails, handleBookDetails, handleCloseModal }: BookModalType) {
     const getBookDetails = (book: IBookObjectAPI) => {
         const objectBook: IBookSchema = {
             author: book.volumeInfo?.authors ? book.volumeInfo?.authors[0] : '',
@@ -27,7 +28,7 @@ function BookModal({ open, bookDetails, handleBookDetails, handleCloseModal }: B
         <>
             <Dialog open={open} onClose={handleCloseModal} className="dialog-modal">
                 <BookSearch getBookDetails={getBookDetails} />
-                <BookForm bookDetails={bookDetails} handleClose={handleCloseModal} />
+                <BookForm bookDetails={bookDetails} handleClose={handleCloseModal} isEditForm={isEditForm} />
             </Dialog>
         </>
     );
