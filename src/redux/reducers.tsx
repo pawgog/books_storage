@@ -1,4 +1,4 @@
-import { GET_BOOKS, ADD_BOOK, DELETE_BOOK } from './actions';
+import { GET_BOOKS, ADD_BOOK, EDIT_BOOK, DELETE_BOOK } from './actions';
 import { GetBooksPostsStateType, BooksActionTypes } from './types';
 import { IBookObject } from '../types/interfaces';
 
@@ -23,6 +23,11 @@ const books = (state = initialStateGetPosts, action: BooksActionTypes): GetBooks
                 booksList: action.payload,
             };
         case ADD_BOOK:
+            return {
+                ...state,
+                booksList: [...state.booksList, ...action.payload],
+            };
+        case EDIT_BOOK:
             return {
                 ...state,
                 booksList: [...state.booksList, ...action.payload],

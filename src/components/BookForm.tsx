@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { TextField, Button, IconButton, FormHelperText } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
-import { addBookAction } from '../redux/actions';
+import { addBookAction, editBookAction } from '../redux/actions';
 import { IBookSchema } from '../types/interfaces';
 
 export interface TBookForm {
@@ -39,6 +39,7 @@ const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
                     if (isEditForm) {
                         // eslint-disable-next-line no-alert
                         alert('Dispatch edit book action in form.');
+                        dispatch(editBookAction([{ ...values, ...setID }]));
                     } else {
                         dispatch(addBookAction([{ ...values, ...setID }]));
                     }

@@ -3,6 +3,7 @@ import { IBookObject } from '../types/interfaces';
 
 export const GET_BOOKS = 'GET_BOOKS';
 export const ADD_BOOK = 'ADD_BOOK';
+export const EDIT_BOOK = 'EDIT_BOOK';
 export const DELETE_BOOK = 'DELETE_BOOK';
 
 export const getBooksAction = (booksList: Array<IBookObject>): BooksActionTypes => ({
@@ -12,6 +13,11 @@ export const getBooksAction = (booksList: Array<IBookObject>): BooksActionTypes 
 
 export const addBookAction = (payload: IBookObject[]) => ({
     type: ADD_BOOK,
+    payload,
+});
+
+export const editBookAction = (payload: IBookObject[]) => ({
+    type: EDIT_BOOK,
     payload,
 });
 
