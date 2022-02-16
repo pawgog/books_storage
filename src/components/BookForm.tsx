@@ -5,11 +5,11 @@ import { Formik } from 'formik';
 import { TextField, Button, IconButton, FormHelperText } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { addBookAction, editBookAction } from '../redux/actions';
-import { IBookSchema } from '../types/interfaces';
+import { IBookObject } from '../types/interfaces';
 
 export interface TBookForm {
     handleClose: Function;
-    bookDetails: IBookSchema;
+    bookDetails: IBookObject;
     isEditForm: boolean;
 }
 
@@ -39,7 +39,7 @@ const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
                     if (isEditForm) {
                         // eslint-disable-next-line no-alert
                         alert('Dispatch edit book action in form.');
-                        dispatch(editBookAction([{ ...values, ...setID }]));
+                        dispatch(editBookAction([{ ...values }]));
                     } else {
                         dispatch(addBookAction([{ ...values, ...setID }]));
                     }

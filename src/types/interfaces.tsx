@@ -12,14 +12,6 @@ export interface IBookObject {
     price: number;
 }
 
-export interface IBookSchema {
-    author: string;
-    title: string;
-    publishing: string;
-    genre: string;
-    price: number;
-}
-
 export interface IBookObjectAPI {
     kind: string;
     id: string;

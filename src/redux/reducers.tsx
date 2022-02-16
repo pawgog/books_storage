@@ -15,7 +15,7 @@ const initialStateGetPosts: GetBooksPostsStateType = {
     ],
 };
 
-const books = (state = initialStateGetPosts, action: BooksActionTypes): GetBooksPostsStateType => {
+const books = (state = initialStateGetPosts, action: BooksActionTypes): any => {
     switch (action.type) {
         case GET_BOOKS:
             return {
@@ -30,7 +30,11 @@ const books = (state = initialStateGetPosts, action: BooksActionTypes): GetBooks
         case EDIT_BOOK:
             return {
                 ...state,
-                booksList: [...state.booksList, ...action.payload],
+                booksList: [
+                    ...state.booksList.map((item: IBookObject) =>
+                        item.id === action.payload[0].id ? action.payload[0] : item,
+                    ),
+                ],
             };
         case DELETE_BOOK:
             return {
