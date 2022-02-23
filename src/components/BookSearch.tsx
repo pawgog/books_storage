@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, SyntheticEvent } from 'react';
 import { Autocomplete, MenuItem, TextField } from '@mui/material';
 import { getBooksSearching } from '../helpers/fetchData';
 
@@ -53,6 +53,11 @@ function BookSearch({ getBookDetails }: TBookSearch) {
         console.log('selected', selectedBookDetails, bookAllDetails);
     };
 
+    const handleInputChange = (e: SyntheticEvent<Element, Event>, inputValue: string) => {
+        setSearchValue(inputValue);
+        setOpenSuggestions(true);
+    };
+
     // eslint-disable-next-line no-console
     console.log('searchBooksCollect', searchBooksCollect);
 
@@ -62,10 +67,7 @@ function BookSearch({ getBookDetails }: TBookSearch) {
                 freeSolo
                 id="books-search"
                 options={searchBooksCollect.map((option) => option.book)}
-                onInputChange={(e, inputValue) => {
-                    setSearchValue(inputValue);
-                    setOpenSuggestions(true);
-                }}
+                onInputChange={handleInputChange}
                 open={openSuggestions}
                 renderOption={(props: any) => (
                     <MenuItem key={props.id} value={props.key} onClick={() => searchSelected(props.key)}>

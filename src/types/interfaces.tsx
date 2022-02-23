@@ -3,7 +3,11 @@ export interface IBooksListArray {
     handleBookEdit: Function;
 }
 
-export interface IBookObject {
+interface IObjectKeys {
+    [key: string]: string | number;
+}
+
+export interface IBookObject extends IObjectKeys {
     id: number;
     title: string;
     author: string;

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { ChangeEventHandler, FocusEventHandler } from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -12,6 +12,55 @@ export interface TBookForm {
     bookDetails: IBookObject;
     isEditForm: boolean;
 }
+
+export interface TFormFields {
+    fieldName: string;
+    handleChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+    handleBlur: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+    values: any;
+    errors: any;
+    touched: any;
+    mandatory: boolean;
+}
+
+const FormFields = [
+    {
+        name: 'author',
+        mandatory: true,
+    },
+    {
+        name: 'title',
+        mandatory: true,
+    },
+    {
+        name: 'publishing',
+        mandatory: false,
+    },
+    {
+        name: 'genre',
+        mandatory: false,
+    },
+    {
+        name: 'price',
+        mandatory: false,
+    },
+];
+
+const FormTextField = ({ fieldName, handleChange, handleBlur, values, errors, touched, mandatory }: TFormFields) => (
+    <>
+        <TextField
+            id={fieldName}
+            label={fieldName}
+            variant="outlined"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values}
+        />
+        {mandatory && errors[fieldName] && touched[fieldName] && (
+            <FormHelperText error>{errors[fieldName]}</FormHelperText>
+        )}
+    </>
+);
 
 const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
     const dispatch = useDispatch();
@@ -37,8 +86,6 @@ const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
                     const setID = { id: Math.floor(Math.random() * 100) };
                     setSubmitting(false);
                     if (isEditForm) {
-                        // eslint-disable-next-line no-alert
-                        alert('Dispatch edit book action in form.');
                         dispatch(editBookAction([{ ...values }]));
                     } else {
                         dispatch(addBookAction([{ ...values, ...setID }]));
@@ -48,54 +95,17 @@ const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
             >
                 {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
                     <form onSubmit={handleSubmit}>
-                        <TextField
-                            id="author"
-                            label="Author"
-                            variant="outlined"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.author}
-                        />
-                        {errors.author && touched.author && <FormHelperText error>{errors.author}</FormHelperText>}
-                        <TextField
-                            id="title"
-                            label="Title"
-                            variant="outlined"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.title}
-                        />
-                        {errors.title && touched.title && <FormHelperText error>{errors.title}</FormHelperText>}
-                        <TextField
-                            id="publishing"
-                            label="Publishing"
-                            variant="outlined"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.publishing}
-                        />
-                        {/* {errors.publishing && touched.publishing && (
-                            <FormHelperText error>{errors.publishing}</FormHelperText>
-                        )} */}
-                        <TextField
-                            id="genre"
-                            label="Genre"
-                            variant="outlined"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.genre}
-                        />
-                        {/* {errors.genre && touched.genre && <FormHelperText error>{errors.genre}</FormHelperText>} */}
-                        <TextField
-                            id="price"
-                            label="Price"
-                            type="number"
-                            variant="outlined"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.price}
-                        />
-                        {/* {errors.price && touched.price && <FormHelperText error>{errors.price}</FormHelperText>} */}
+                        {FormFields.map(({ name, mandatory }) => (
+                            <FormTextField
+                                fieldName={name}
+                                handleChange={handleChange}
+                                handleBlur={handleBlur}
+                                values={values[name]}
+                                errors={errors}
+                                touched={touched}
+                                mandatory={mandatory}
+                            />
+                        ))}
                         <Button variant="contained" type="submit" disabled={isSubmitting}>
                             Submit
                         </Button>
