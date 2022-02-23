@@ -5,9 +5,8 @@ import { AppState } from '../redux/store';
 import BookMenu from './BookMenu';
 import BookModal from './BookModal';
 import BooksList from './BooksList';
+import { bookSchemaInit } from '../helpers/staticData';
 import { IBookObject } from '../types/interfaces';
-
-const bookSchemaInit = { id: 0, author: '', title: '', publishing: '', genre: '', price: 0 };
 
 function Home() {
     const [open, setOpen] = useState(false);

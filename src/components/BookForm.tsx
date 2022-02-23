@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 import { TextField, Button, IconButton, FormHelperText } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { addBookAction, editBookAction } from '../redux/actions';
+import { formFieldsData } from '../helpers/staticData';
 import { IBookObject } from '../types/interfaces';
 
 export interface TBookForm {
@@ -22,29 +23,6 @@ export interface TFormFields {
     touched: any;
     mandatory: boolean;
 }
-
-const FormFields = [
-    {
-        name: 'author',
-        mandatory: true,
-    },
-    {
-        name: 'title',
-        mandatory: true,
-    },
-    {
-        name: 'publishing',
-        mandatory: false,
-    },
-    {
-        name: 'genre',
-        mandatory: false,
-    },
-    {
-        name: 'price',
-        mandatory: false,
-    },
-];
 
 const FormTextField = ({ fieldName, handleChange, handleBlur, values, errors, touched, mandatory }: TFormFields) => (
     <>
@@ -95,7 +73,7 @@ const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
             >
                 {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
                     <form onSubmit={handleSubmit}>
-                        {FormFields.map(({ name, mandatory }) => (
+                        {formFieldsData.map(({ name, mandatory }) => (
                             <FormTextField
                                 fieldName={name}
                                 handleChange={handleChange}
