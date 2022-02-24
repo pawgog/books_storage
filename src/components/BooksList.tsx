@@ -76,11 +76,9 @@ function BooksList({ books, handleBookEdit }: IBooksListArray) {
                 <TableBody>
                     {booksSorted.map((book: IBookObject) => (
                         <TableRow key={book.id}>
-                            <TableCell>{book.title}</TableCell>
-                            <TableCell>{book.author}</TableCell>
-                            <TableCell>{book.publishing}</TableCell>
-                            <TableCell>{book.genre}</TableCell>
-                            <TableCell>{book.price}</TableCell>
+                            {formFieldsData.map(({ name }) => (
+                                <TableCell>{book[name]}</TableCell>
+                            ))}
                             <TableCell>
                                 <IconButton aria-label="edit" onClick={() => handleBookEdit(book)}>
                                     <EditIcon />
