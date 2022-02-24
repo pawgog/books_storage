@@ -6,11 +6,26 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ConfirmModal from './ConfirmModal';
 import { deleteBookAction } from '../redux/actions';
 import useSortableData from '../helpers/hooks';
+import { formFieldsData } from '../helpers/staticData';
 import { IBooksListArray, IBookObject } from '../types/interfaces';
 
 const staticText = {
     confirmMessage: 'Would you like to delete book item?',
 };
+
+export interface ITableCellContent {
+    cellName: string;
+    detectSortDirection: Function;
+    requestSort: Function;
+}
+
+const TableCellContent = ({ cellName, detectSortDirection, requestSort }: ITableCellContent) => (
+    <TableCell key={cellName} className={detectSortDirection(cellName)}>
+        <button type="button" onClick={() => requestSort(cellName)}>
+            {cellName}
+        </button>
+    </TableCell>
+);
 
 function BooksList({ books, handleBookEdit }: IBooksListArray) {
     const dispatch = useDispatch();
@@ -48,33 +63,14 @@ function BooksList({ books, handleBookEdit }: IBooksListArray) {
             <Table aria-label="books table">
                 <TableHead>
                     <TableRow>
-                        <TableCell key="title" className={detectSortDirection('title')}>
-                            <button type="button" onClick={() => requestSort('title')}>
-                                Title
-                            </button>
-                        </TableCell>
-                        <TableCell key="author" className={detectSortDirection('author')}>
-                            <button type="button" onClick={() => requestSort('author')}>
-                                Author
-                            </button>
-                        </TableCell>
-                        <TableCell key="publishing" className={detectSortDirection('publishing')}>
-                            <button type="button" onClick={() => requestSort('publishing')}>
-                                Publishing House
-                            </button>
-                        </TableCell>
-                        <TableCell key="genre" className={detectSortDirection('genre')}>
-                            <button type="button" onClick={() => requestSort('genre')}>
-                                Genre
-                            </button>
-                        </TableCell>
-                        <TableCell key="price" className={detectSortDirection('price')}>
-                            <button type="button" onClick={() => requestSort('price')}>
-                                Price
-                            </button>
-                        </TableCell>
-                        <TableCell />
-                        <TableCell />
+                        {formFieldsData.map(({ name }) => (
+                            <TableCellContent
+                                cellName={name}
+                                detectSortDirection={detectSortDirection}
+                                requestSort={requestSort}
+                            />
+                        ))}
+                        <TableCell colSpan={2} />
                     </TableRow>
                 </TableHead>
                 <TableBody>
