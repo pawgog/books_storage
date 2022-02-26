@@ -40,6 +40,16 @@ const FormTextField = ({ fieldName, handleChange, handleBlur, values, errors, to
     </>
 );
 
+const isFormTextFieldMandatory = () => {
+    const validationObject: { [key: string]: Yup.StringSchema } = {};
+
+    formFieldsData.forEach(({ name, mandatory }) => {
+        if (mandatory) validationObject[name] = Yup.string().required();
+    });
+
+    return Yup.object(validationObject);
+};
+
 const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
     const dispatch = useDispatch();
 
@@ -53,13 +63,7 @@ const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
             <Formik
                 initialValues={bookDetails}
                 enableReinitialize
-                validationSchema={Yup.object().shape({
-                    author: Yup.string().required('Field required!'),
-                    title: Yup.string().required('Field required!'),
-                    // publishing: Yup.string().required('Field required!'),
-                    // genre: Yup.string().required('Field required!'),
-                    // price: Yup.string().required('Field required!'),
-                })}
+                validationSchema={isFormTextFieldMandatory()}
                 onSubmit={(values, { setSubmitting }) => {
                     const setID = { id: Math.floor(Math.random() * 100) };
                     setSubmitting(false);
@@ -75,6 +79,7 @@ const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
                     <form onSubmit={handleSubmit}>
                         {formFieldsData.map(({ name, mandatory }) => (
                             <FormTextField
+                                key={name}
                                 fieldName={name}
                                 handleChange={handleChange}
                                 handleBlur={handleBlur}

@@ -65,6 +65,7 @@ function BooksList({ books, handleBookEdit }: IBooksListArray) {
                     <TableRow>
                         {formFieldsData.map(({ name }) => (
                             <TableCellContent
+                                key={name}
                                 cellName={name}
                                 detectSortDirection={detectSortDirection}
                                 requestSort={requestSort}
@@ -77,7 +78,7 @@ function BooksList({ books, handleBookEdit }: IBooksListArray) {
                     {booksSorted.map((book: IBookObject) => (
                         <TableRow key={book.id}>
                             {formFieldsData.map(({ name }) => (
-                                <TableCell>{book[name]}</TableCell>
+                                <TableCell key={name}>{book[name]}</TableCell>
                             ))}
                             <TableCell>
                                 <IconButton aria-label="edit" onClick={() => handleBookEdit(book)}>
