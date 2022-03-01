@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 import { TextField, Button, IconButton, FormHelperText } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { addBookAction, editBookAction } from '../redux/actions';
+import { BooksForm, BooksFormButton } from '../styles/BookForm.styled';
 import { formFieldsData } from '../helpers/staticData';
 import { IBookObject } from '../types/interfaces';
 
@@ -54,12 +55,12 @@ const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
     const dispatch = useDispatch();
 
     return (
-        <div className="books-form">
-            <div className="books-form__btn-cancel">
+        <BooksForm>
+            <BooksFormButton>
                 <IconButton aria-label="cancel" onClick={() => handleClose()}>
                     <CancelIcon />
                 </IconButton>
-            </div>
+            </BooksFormButton>
             <Formik
                 initialValues={bookDetails}
                 enableReinitialize
@@ -95,7 +96,7 @@ const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
                     </form>
                 )}
             </Formik>
-        </div>
+        </BooksForm>
     );
 };
 

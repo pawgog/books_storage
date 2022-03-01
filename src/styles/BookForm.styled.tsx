@@ -1,9 +1,6 @@
-.books-form {
-    &__btn-cancel {
-        position: absolute;
-        top: 3%;
-        right: 1%;
-    }
+import styled from 'styled-components';
+
+export const BooksForm = styled.div`
     & form {
         display: flex;
         flex-direction: column;
@@ -16,4 +13,10 @@
             margin-top: 30px;
         }
     }
-}
+`;
+
+export const BooksFormButton = styled.div`
+    position: absolute;
+    top: 3%;
+    right: 1%;
+`;
