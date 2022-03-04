@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import theme from '../styles/theme';
+import GlobalStyle from '../styles/GlobalStyle';
+import BookListStyled from '../styles/BookList.styled';
 import { getBooks } from '../helpers/fetchData';
 import { AppState } from '../redux/store';
 import BookMenu from './BookMenu';
@@ -47,9 +51,10 @@ function Home() {
     console.log('books', booksList);
 
     return (
-        <>
+        <ThemeProvider theme={theme}>
+            <GlobalStyle />
             <BookMenu handleOpenModal={handleOpen} />
-            <div className="books-dashboard-body">
+            <BookListStyled>
                 <BookModal
                     open={open}
                     isEditForm={isEditForm}
@@ -58,8 +63,8 @@ function Home() {
                     handleCloseModal={handleClose}
                 />
                 <BooksList books={booksList} handleBookEdit={handleBookEdit} />
-            </div>
-        </>
+            </BookListStyled>
+        </ThemeProvider>
     );
 }
 

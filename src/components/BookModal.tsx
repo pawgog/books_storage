@@ -1,7 +1,7 @@
 import React from 'react';
-import { Dialog } from '@mui/material';
 import BookForm from './BookForm';
 import BookSearch from './BookSearch';
+import { BooksModalStyled } from '../styles/BookModal.styled';
 import { IBookObject, IBookObjectAPI } from '../types/interfaces';
 
 interface BookModalType {
@@ -27,10 +27,10 @@ function BookModal({ open, isEditForm, bookDetails, handleBookDetails, handleClo
 
     return (
         <>
-            <Dialog open={open} onClose={handleCloseModal} className="dialog-modal">
+            <BooksModalStyled open={open} onClose={handleCloseModal}>
                 <BookSearch getBookDetails={getBookDetails} />
                 <BookForm bookDetails={bookDetails} handleClose={handleCloseModal} isEditForm={isEditForm} />
-            </Dialog>
+            </BooksModalStyled>
         </>
     );
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, SyntheticEvent } from 'react';
 import { Autocomplete, MenuItem, TextField } from '@mui/material';
+import BooksSearchStyled from '../styles/BookSearch.styled';
 import { getBooksSearching } from '../helpers/fetchData';
 
 export interface BookObject {
@@ -62,7 +63,7 @@ function BookSearch({ getBookDetails }: TBookSearch) {
     console.log('searchBooksCollect', searchBooksCollect);
 
     return (
-        <div className="books-search">
+        <BooksSearchStyled>
             <Autocomplete
                 freeSolo
                 id="books-search"
@@ -76,7 +77,7 @@ function BookSearch({ getBookDetails }: TBookSearch) {
                 )}
                 renderInput={(params: any) => <TextField {...params} label="Search books" />}
             />
-        </div>
+        </BooksSearchStyled>
     );
 }
 

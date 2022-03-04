@@ -1,11 +1,14 @@
-.dialog-modal {
+import styled from 'styled-components';
+import { Dialog } from '@mui/material';
+
+export const BooksModalStyled = styled(Dialog)`
     & .MuiDialog-paper {
         min-width: 400px;
         padding: 50px;
     }
-}
+`;
 
-.confirm-modal__content {
+export const BooksFormModalContentStyled = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -14,4 +17,4 @@
     & > button:first-child {
         margin-right: 30px;
     }
-}
+`;

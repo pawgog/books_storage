@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const BooksForm = styled.div`
+export const BooksFormStyled = styled.div`
     & form {
         display: flex;
         flex-direction: column;
@@ -15,7 +15,7 @@ export const BooksForm = styled.div`
     }
 `;
 
-export const BooksFormButton = styled.div`
+export const BooksFormButtonStyled = styled.div`
     position: absolute;
     top: 3%;
     right: 1%;
