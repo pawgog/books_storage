@@ -1,12 +1,19 @@
-import * as React from 'react';
-import { AppBar, Box, Toolbar, Button, IconButton } from '@mui/material';
+import React, { useState } from 'react';
+import { AppBar, Box, Toolbar, TextField, Button, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
 
 interface BookMenuType {
     handleOpenModal: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 function BookMenu({ handleOpenModal }: BookMenuType) {
+    const [filterValue, setFilterValue] = useState<string>('');
+
+    const changeFilterValue = (value: string) => {
+        setFilterValue(value);
+    };
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -14,6 +21,15 @@ function BookMenu({ handleOpenModal }: BookMenuType) {
                     <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
                         <MenuIcon />
                     </IconButton>
+                    <TextField
+                        id="findAuthor"
+                        label="Find Author"
+                        variant="outlined"
+                        onChange={(e) => changeFilterValue(e.target.value)}
+                        value={filterValue}
+                    >
+                        <SearchIcon />
+                    </TextField>
                     <Button color="inherit" variant="outlined" onClick={handleOpenModal}>
                         Add book
                     </Button>
