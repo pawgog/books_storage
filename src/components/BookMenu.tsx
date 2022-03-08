@@ -23,13 +23,13 @@ function BookMenu({ handleOpenModal }: BookMenuType) {
                     </IconButton>
                     <TextField
                         id="findAuthor"
-                        label="Find Author"
-                        variant="outlined"
+                        variant="standard"
                         onChange={(e) => changeFilterValue(e.target.value)}
                         value={filterValue}
-                    >
-                        <SearchIcon />
-                    </TextField>
+                        InputProps={{
+                            startAdornment: <SearchIcon />,
+                        }}
+                    />
                     <Button color="inherit" variant="outlined" onClick={handleOpenModal}>
                         Add book
                     </Button>
