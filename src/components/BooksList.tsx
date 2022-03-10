@@ -27,7 +27,7 @@ const TableCellContent = ({ cellName, detectSortDirection, requestSort }: ITable
     </TableCell>
 );
 
-function BooksList({ books, handleBookEdit }: IBooksListArray) {
+function BooksList({ books, filterValue, handleBookEdit }: IBooksListArray) {
     const dispatch = useDispatch();
     const [isOpen, setOpenConfirm] = useState(false);
     const [bookIdSelected, selectBook] = useState(0);
@@ -58,6 +58,10 @@ function BooksList({ books, handleBookEdit }: IBooksListArray) {
         setOpenConfirm(false);
     };
 
+    const filterBooksList = booksSorted.filter((item: IBookObject) =>
+        item.author.toLowerCase().includes(filterValue.toLowerCase()),
+    );
+
     return (
         <TableContainer>
             <Table aria-label="books table">
@@ -75,7 +79,7 @@ function BooksList({ books, handleBookEdit }: IBooksListArray) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {booksSorted.map((book: IBookObject) => (
+                    {filterBooksList.map((book: IBookObject) => (
                         <TableRow key={book.id}>
                             {formFieldsData.map(({ name }) => (
                                 <TableCell key={name}>{book[name]}</TableCell>

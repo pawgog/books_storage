@@ -1,19 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AppBar, Box, Toolbar, TextField, Button, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 
 interface BookMenuType {
     handleOpenModal: React.MouseEventHandler<HTMLButtonElement>;
+    filterBooksTable: (value: string) => void;
+    filterValue: string;
 }
 
-function BookMenu({ handleOpenModal }: BookMenuType) {
-    const [filterValue, setFilterValue] = useState<string>('');
-
-    const changeFilterValue = (value: string) => {
-        setFilterValue(value);
-    };
-
+function BookMenu({ handleOpenModal, filterBooksTable, filterValue }: BookMenuType) {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -24,7 +20,7 @@ function BookMenu({ handleOpenModal }: BookMenuType) {
                     <TextField
                         id="findAuthor"
                         variant="standard"
-                        onChange={(e) => changeFilterValue(e.target.value)}
+                        onChange={(e) => filterBooksTable(e.target.value)}
                         value={filterValue}
                         InputProps={{
                             startAdornment: <SearchIcon />,

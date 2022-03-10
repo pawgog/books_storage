@@ -1,5 +1,6 @@
 export interface IBooksListArray {
     books: Array<IBookObject>;
+    filterValue: string;
     handleBookEdit: Function;
 }
 

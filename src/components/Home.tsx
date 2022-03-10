@@ -16,6 +16,7 @@ function Home() {
     const [open, setOpen] = useState(false);
     const [bookDetails, setBookDetails] = useState(bookSchemaInit);
     const [isEditForm, setEditForm] = useState(false);
+    const [filterValue, setFilterValue] = useState<string>('');
 
     const dispatch = useDispatch();
     const getBooksCallback = useCallback(() => {
@@ -47,13 +48,17 @@ function Home() {
         setOpen(false);
     };
 
+    const filterBooksTable = (value: string) => {
+        setFilterValue(value);
+    };
+
     // eslint-disable-next-line no-console
     console.log('books', booksList);
 
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyle />
-            <BookMenu handleOpenModal={handleOpen} />
+            <BookMenu handleOpenModal={handleOpen} filterBooksTable={filterBooksTable} filterValue={filterValue} />
             <BookListStyled>
                 <BookModal
                     open={open}
@@ -62,7 +67,7 @@ function Home() {
                     handleBookDetails={handleBookDetails}
                     handleCloseModal={handleClose}
                 />
-                <BooksList books={booksList} handleBookEdit={handleBookEdit} />
+                <BooksList books={booksList} filterValue={filterValue} handleBookEdit={handleBookEdit} />
             </BookListStyled>
         </ThemeProvider>
     );
