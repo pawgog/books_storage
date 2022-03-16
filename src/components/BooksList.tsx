@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton } from '@mui/material';
+import {
+    Typography,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    IconButton,
+} from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ConfirmModal from './ConfirmModal';
@@ -79,29 +88,33 @@ function BooksList({ books, filterValue, handleBookEdit }: IBooksListArray) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {filterBooksList.map((book: IBookObject) => (
-                        <TableRow key={book.id}>
-                            {formFieldsData.map(({ name }) => (
-                                <TableCell key={name}>{book[name]}</TableCell>
-                            ))}
-                            <TableCell>
-                                <IconButton aria-label="edit" onClick={() => handleBookEdit(book)}>
-                                    <EditIcon />
-                                </IconButton>
-                            </TableCell>
-                            <TableCell>
-                                <IconButton aria-label="delete" onClick={() => openConfirm(book.id)}>
-                                    <DeleteIcon />
-                                </IconButton>
-                                <ConfirmModal
-                                    confirmMessage={staticText.confirmMessage}
-                                    confirmResultFnc={confirmFnc}
-                                    handleCloseConfirm={closeConfirm}
-                                    isOpen={isOpen}
-                                />
-                            </TableCell>
-                        </TableRow>
-                    ))}
+                    {filterBooksList.length !== 0 ? (
+                        filterBooksList.map((book: IBookObject) => (
+                            <TableRow key={book.id}>
+                                {formFieldsData.map(({ name }) => (
+                                    <TableCell key={name}>{book[name]}</TableCell>
+                                ))}
+                                <TableCell>
+                                    <IconButton aria-label="edit" onClick={() => handleBookEdit(book)}>
+                                        <EditIcon />
+                                    </IconButton>
+                                </TableCell>
+                                <TableCell>
+                                    <IconButton aria-label="delete" onClick={() => openConfirm(book.id)}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                    <ConfirmModal
+                                        confirmMessage={staticText.confirmMessage}
+                                        confirmResultFnc={confirmFnc}
+                                        handleCloseConfirm={closeConfirm}
+                                        isOpen={isOpen}
+                                    />
+                                </TableCell>
+                            </TableRow>
+                        ))
+                    ) : (
+                        <Typography variant="h6">There is no item!</Typography>
+                    )}
                 </TableBody>
             </Table>
         </TableContainer>
