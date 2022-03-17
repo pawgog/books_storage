@@ -20,6 +20,7 @@ import { IBooksListArray, IBookObject } from '../types/interfaces';
 
 const staticText = {
     confirmMessage: 'Would you like to delete book item?',
+    noItems: 'There is no item!',
 };
 
 export interface ITableCellContent {
@@ -113,7 +114,7 @@ function BooksList({ books, filterValue, handleBookEdit }: IBooksListArray) {
                             </TableRow>
                         ))
                     ) : (
-                        <Typography variant="h6">There is no item!</Typography>
+                        <Typography variant="h6">{staticText.noItems}</Typography>
                     )}
                 </TableBody>
             </Table>
