@@ -114,7 +114,9 @@ function BooksList({ books, filterValue, handleBookEdit }: IBooksListArray) {
                             </TableRow>
                         ))
                     ) : (
-                        <Typography variant="h6">{staticText.noItems}</Typography>
+                        <TableCell colSpan={6}>
+                            <Typography variant="h6">{staticText.noItems}</Typography>
+                        </TableCell>
                     )}
                 </TableBody>
             </Table>

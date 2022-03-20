@@ -22,6 +22,12 @@ const BookListStyled = styled.div`
         width: 160px;
     }
 
+    & .MuiTableBody-root h6 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     & .MuiTableRow-root th {
         font-weight: 600;
 
