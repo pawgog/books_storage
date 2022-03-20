@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
+import { Grid, CircularProgress } from '@mui/material';
 import theme from '../styles/theme';
 import GlobalStyle from '../styles/GlobalStyle';
 import BookListStyled from '../styles/BookList.styled';
@@ -59,16 +60,31 @@ function Home() {
         <ThemeProvider theme={theme}>
             <GlobalStyle />
             <BookMenu handleOpenModal={handleOpen} filterBooksTable={filterBooksTable} filterValue={filterValue} />
-            <BookListStyled>
-                <BookModal
-                    open={open}
-                    isEditForm={isEditForm}
-                    bookDetails={bookDetails}
-                    handleBookDetails={handleBookDetails}
-                    handleCloseModal={handleClose}
-                />
-                <BooksList books={booksList} filterValue={filterValue} handleBookEdit={handleBookEdit} />
-            </BookListStyled>
+            {booksList.length <= 1 && booksList[0].title === '' ? (
+                <Grid
+                    container
+                    spacing={0}
+                    direction="column"
+                    alignItems="center"
+                    justifyContent="center"
+                    style={{ minHeight: '100vh' }}
+                >
+                    <Grid item xs={3}>
+                        <CircularProgress />
+                    </Grid>
+                </Grid>
+            ) : (
+                <BookListStyled>
+                    <BookModal
+                        open={open}
+                        isEditForm={isEditForm}
+                        bookDetails={bookDetails}
+                        handleBookDetails={handleBookDetails}
+                        handleCloseModal={handleClose}
+                    />
+                    <BooksList books={booksList} filterValue={filterValue} handleBookEdit={handleBookEdit} />
+                </BookListStyled>
+            )}
         </ThemeProvider>
     );
 }
