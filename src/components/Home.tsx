@@ -67,7 +67,7 @@ function Home() {
                     direction="column"
                     alignItems="center"
                     justifyContent="center"
-                    style={{ minHeight: '100vh' }}
+                    sx={{ minHeight: '100vh' }}
                 >
                     <Grid item xs={3}>
                         <CircularProgress />
