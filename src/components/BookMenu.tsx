@@ -1,6 +1,5 @@
 import React from 'react';
-import { AppBar, Box, Toolbar, TextField, Button, IconButton } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Box, Toolbar, TextField, Button, FormControl, MenuItem, Select } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 interface BookMenuType {
@@ -10,13 +9,19 @@ interface BookMenuType {
 }
 
 function BookMenu({ handleOpenModal, filterBooksTable, filterValue }: BookMenuType) {
+    const [lang, setLanguage] = React.useState('en');
+
+    const handleChange = (event: { target: { value: React.SetStateAction<string> } }) => {
+        setLanguage(event.target.value);
+    };
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar sx={{ justifyContent: 'space-between' }}>
-                    <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-                        <MenuIcon />
-                    </IconButton>
+                    <Button color="inherit" variant="outlined" onClick={handleOpenModal}>
+                        Add book
+                    </Button>
                     <TextField
                         id="findAuthor"
                         variant="standard"
@@ -26,9 +31,14 @@ function BookMenu({ handleOpenModal, filterBooksTable, filterValue }: BookMenuTy
                             startAdornment: <SearchIcon />,
                         }}
                     />
-                    <Button color="inherit" variant="outlined" onClick={handleOpenModal}>
-                        Add book
-                    </Button>
+                    <Box sx={{ minWidth: 120 }}>
+                        <FormControl fullWidth>
+                            <Select id="select-language" value={lang} displayEmpty onChange={handleChange}>
+                                <MenuItem value="en">English</MenuItem>
+                                <MenuItem value="pl">Polski</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
                 </Toolbar>
             </AppBar>
         </Box>
