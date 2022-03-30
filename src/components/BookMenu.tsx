@@ -1,6 +1,7 @@
 import React from 'react';
-import { AppBar, Box, Toolbar, TextField, Button, FormControl, MenuItem, Select } from '@mui/material';
+import { AppBar, TextField, Button, FormControl, MenuItem, Select } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { StyledBox, StyledToolbar, StyledSelectBox } from '../styles/BookMenu.styled';
 
 interface BookMenuType {
     handleOpenModal: React.MouseEventHandler<HTMLButtonElement>;
@@ -16,9 +17,9 @@ function BookMenu({ handleOpenModal, filterBooksTable, filterValue }: BookMenuTy
     };
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <StyledBox>
             <AppBar position="static">
-                <Toolbar sx={{ justifyContent: 'space-between' }}>
+                <StyledToolbar>
                     <Button color="inherit" variant="outlined" onClick={handleOpenModal}>
                         Add book
                     </Button>
@@ -31,17 +32,17 @@ function BookMenu({ handleOpenModal, filterBooksTable, filterValue }: BookMenuTy
                             startAdornment: <SearchIcon />,
                         }}
                     />
-                    <Box sx={{ minWidth: 120 }}>
+                    <StyledSelectBox>
                         <FormControl fullWidth>
-                            <Select id="select-language" value={lang} displayEmpty onChange={handleChange}>
+                            <Select id="select-language" value={lang} onChange={handleChange}>
                                 <MenuItem value="en">English</MenuItem>
                                 <MenuItem value="pl">Polski</MenuItem>
                             </Select>
                         </FormControl>
-                    </Box>
-                </Toolbar>
+                    </StyledSelectBox>
+                </StyledToolbar>
             </AppBar>
-        </Box>
+        </StyledBox>
     );
 }
 
