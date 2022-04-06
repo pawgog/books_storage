@@ -2,7 +2,8 @@ interface IWordsObject {
     [key: string]: string;
 }
 
-const translateWords = (words: string, lang: string) => {
+const translateWords = (words: string) => {
+    const selectLang = 'en';
     const wordsListEn: IWordsObject = {
         author: 'Author',
         title: 'Title',
@@ -18,7 +19,7 @@ const translateWords = (words: string, lang: string) => {
         price: 'Cena',
     };
 
-    switch (lang) {
+    switch (selectLang) {
         case 'en':
             return wordsListEn[words.toLowerCase()];
         case 'pl':

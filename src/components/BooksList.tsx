@@ -33,7 +33,7 @@ export interface ITableCellContent {
 const TableCellContent = ({ cellName, detectSortDirection, requestSort }: ITableCellContent) => (
     <TableCell key={cellName} className={detectSortDirection(cellName)}>
         <button type="button" onClick={() => requestSort(cellName)}>
-            {translateWords(cellName, 'en')}
+            {translateWords(cellName)}
         </button>
     </TableCell>
 );

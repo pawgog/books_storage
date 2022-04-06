@@ -1,8 +1,9 @@
 import { IBookObject } from '../types/interfaces';
-import { GET_BOOKS, ADD_BOOK, EDIT_BOOK, DELETE_BOOK } from './actions';
+import { GET_BOOKS, ADD_BOOK, EDIT_BOOK, DELETE_BOOK, SELECT_LANG } from './actions';
 
 export interface GetBooksPostsStateType {
     booksList: Array<IBookObject>;
+    lang: string;
 }
 
 interface GetBooksActionType {
@@ -25,4 +26,14 @@ interface DeleteBookActionType {
     payload: string;
 }
 
-export type BooksActionTypes = GetBooksActionType | AddBookActionType | EditBookActionType | DeleteBookActionType;
+interface SelectLangActionType {
+    type: typeof SELECT_LANG;
+    payload: string;
+}
+
+export type BooksActionTypes =
+    | GetBooksActionType
+    | AddBookActionType
+    | EditBookActionType
+    | DeleteBookActionType
+    | SelectLangActionType;

@@ -6,6 +6,8 @@ export const ADD_BOOK = 'ADD_BOOK';
 export const EDIT_BOOK = 'EDIT_BOOK';
 export const DELETE_BOOK = 'DELETE_BOOK';
 
+export const SELECT_LANG = 'SELECT_LANG';
+
 export const getBooksAction = (booksList: Array<IBookObject>): BooksActionTypes => ({
     type: GET_BOOKS,
     payload: booksList,
@@ -23,5 +25,10 @@ export const editBookAction = (payload: IBookObject[]) => ({
 
 export const deleteBookAction = (payload: number) => ({
     type: DELETE_BOOK,
+    payload,
+});
+
+export const selectLang = (payload: string) => ({
+    type: SELECT_LANG,
     payload,
 });
