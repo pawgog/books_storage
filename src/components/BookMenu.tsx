@@ -1,6 +1,8 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { AppBar, TextField, Button, FormControl, MenuItem, Select } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { selectLang } from '../redux/actions';
 import { StyledBox, StyledToolbar, StyledSelectBox } from '../styles/BookMenu.styled';
 
 interface BookMenuType {
@@ -10,10 +12,12 @@ interface BookMenuType {
 }
 
 function BookMenu({ handleOpenModal, filterBooksTable, filterValue }: BookMenuType) {
-    const [lang, setLanguage] = React.useState('en');
+    const dispatch = useDispatch();
+    const [lang, setLanguage] = React.useState<string>('en');
 
-    const handleChange = (event: { target: { value: React.SetStateAction<string> } }) => {
-        setLanguage(event.target.value);
+    const handleChange = (selectedLanguage: string) => {
+        dispatch(selectLang(selectedLanguage));
+        setLanguage(selectedLanguage);
     };
 
     return (
@@ -34,7 +38,7 @@ function BookMenu({ handleOpenModal, filterBooksTable, filterValue }: BookMenuTy
                     />
                     <StyledSelectBox>
                         <FormControl fullWidth>
-                            <Select id="select-language" value={lang} onChange={handleChange}>
+                            <Select id="select-language" value={lang} onChange={(e) => handleChange(e.target.value)}>
                                 <MenuItem value="en">English</MenuItem>
                                 <MenuItem value="pl">Polski</MenuItem>
                             </Select>
