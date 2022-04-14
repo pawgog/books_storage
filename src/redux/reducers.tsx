@@ -1,4 +1,4 @@
-import { GET_BOOKS, ADD_BOOK, EDIT_BOOK, DELETE_BOOK, SELECT_LANG } from './actions';
+import { GET_BOOKS, ADD_BOOK, EDIT_BOOK, DELETE_BOOK } from './actions';
 import { GetBooksPostsStateType, BooksActionTypes } from './types';
 import { IBookObject } from '../types/interfaces';
 
@@ -13,7 +13,6 @@ const initialStateGetPosts: GetBooksPostsStateType = {
             price: 0,
         },
     ],
-    lang: 'eng',
 };
 
 const books = (state = initialStateGetPosts, action: BooksActionTypes): any => {
@@ -41,11 +40,6 @@ const books = (state = initialStateGetPosts, action: BooksActionTypes): any => {
             return {
                 ...state,
                 booksList: [...state.booksList.filter((item: IBookObject) => item.id !== Number(action.payload))],
-            };
-        case SELECT_LANG:
-            return {
-                ...state,
-                lang: action.payload,
             };
         default:
             return state;

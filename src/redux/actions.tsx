@@ -27,8 +27,3 @@ export const deleteBookAction = (payload: number) => ({
     type: DELETE_BOOK,
     payload,
 });
-
-export const selectLang = (payload: string) => ({
-    type: SELECT_LANG,
-    payload,
-});

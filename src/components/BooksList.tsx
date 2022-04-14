@@ -15,7 +15,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ConfirmModal from './ConfirmModal';
 import { deleteBookAction } from '../redux/actions';
 import useSortableData from '../helpers/hooks';
-import translateWords from '../helpers/translate';
 import { formFieldsData } from '../helpers/staticData';
 import { IBooksListArray, IBookObject } from '../types/interfaces';
 
@@ -33,7 +32,7 @@ export interface ITableCellContent {
 const TableCellContent = ({ cellName, detectSortDirection, requestSort }: ITableCellContent) => (
     <TableCell key={cellName} className={detectSortDirection(cellName)}>
         <button type="button" onClick={() => requestSort(cellName)}>
-            {translateWords(cellName)}
+            {cellName}
         </button>
     </TableCell>
 );
