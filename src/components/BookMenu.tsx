@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { AppBar, TextField, Button, FormControl, MenuItem, Select } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { StyledBox, StyledToolbar, StyledSelectBox } from '../styles/BookMenu.styled';
@@ -10,10 +11,12 @@ interface BookMenuType {
 }
 
 function BookMenu({ handleOpenModal, filterBooksTable, filterValue }: BookMenuType) {
+    const { t, i18n } = useTranslation();
     const [lang, setLanguage] = React.useState<string>('en');
 
     const handleChange = (selectedLanguage: string) => {
         setLanguage(selectedLanguage);
+        i18n.changeLanguage(selectedLanguage);
     };
 
     return (
