@@ -24,7 +24,7 @@ function BookMenu({ handleOpenModal, filterBooksTable, filterValue }: BookMenuTy
             <AppBar position="static">
                 <StyledToolbar>
                     <Button color="inherit" variant="outlined" onClick={handleOpenModal}>
-                        Add book
+                        {t('Add book')}
                     </Button>
                     <TextField
                         id="findAuthor"
