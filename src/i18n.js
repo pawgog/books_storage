@@ -4,12 +4,26 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
     en: {
         translation: {
+            author: 'author',
+            title: 'title',
+            publishing: 'publishing',
+            genre: 'genre',
+            price: 'price',
             'Add book': 'Add book',
+            'There is no item!': 'There is no item!',
+            'Would you like to delete book item?': 'Would you like to delete book item?',
         },
     },
     pl: {
         translation: {
+            author: 'autor',
+            title: 'tytuł',
+            publishing: 'wydawnictwo',
+            genre: 'gatunek',
+            price: 'cena',
             'Add book': 'Dodaj książkę',
+            'There is no item!': 'Nie ma wyszukiwanych elementów!',
+            'Would you like to delete book item?': 'Czy na pewno chcesz usunąć ten element?',
         },
     },
 };

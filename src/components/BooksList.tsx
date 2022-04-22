@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import {
     Typography,
     Table,
@@ -39,6 +40,7 @@ const TableCellContent = ({ cellName, detectSortDirection, requestSort }: ITable
 
 function BooksList({ books, filterValue, handleBookEdit }: IBooksListArray) {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
     const [isOpen, setOpenConfirm] = useState(false);
     const [bookIdSelected, selectBook] = useState(0);
     const { booksSorted, requestSort, sortConfig } = useSortableData(books);
@@ -80,7 +82,7 @@ function BooksList({ books, filterValue, handleBookEdit }: IBooksListArray) {
                         {formFieldsData.map(({ name }) => (
                             <TableCellContent
                                 key={name}
-                                cellName={name}
+                                cellName={t(name)}
                                 detectSortDirection={detectSortDirection}
                                 requestSort={requestSort}
                             />
@@ -105,7 +107,7 @@ function BooksList({ books, filterValue, handleBookEdit }: IBooksListArray) {
                                         <DeleteIcon />
                                     </IconButton>
                                     <ConfirmModal
-                                        confirmMessage={staticText.confirmMessage}
+                                        confirmMessage={t(staticText.confirmMessage)}
                                         confirmResultFnc={confirmFnc}
                                         handleCloseConfirm={closeConfirm}
                                         isOpen={isOpen}
@@ -116,7 +118,7 @@ function BooksList({ books, filterValue, handleBookEdit }: IBooksListArray) {
                     ) : (
                         <TableRow>
                             <TableCell colSpan={6}>
-                                <Typography variant="h6">{staticText.noItems}</Typography>
+                                <Typography variant="h6">{t(staticText.noItems)}</Typography>
                             </TableCell>
                         </TableRow>
                     )}
