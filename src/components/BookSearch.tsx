@@ -1,4 +1,5 @@
 import React, { useState, useEffect, SyntheticEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Autocomplete, MenuItem, TextField } from '@mui/material';
 import BooksSearchStyled from '../styles/BookSearch.styled';
 import { getBooksSearching } from '../helpers/fetchData';
@@ -13,6 +14,7 @@ export interface TBookSearch {
 }
 
 function BookSearch({ getBookDetails }: TBookSearch) {
+    const { t } = useTranslation();
     const [searchValue, setSearchValue] = useState<string>('');
     const [openSuggestions, setOpenSuggestions] = useState<boolean>(false);
     const [searchBooksAllCollect, setSearchBooksAllCollect] = useState<Array<BookObject>>([{ id: '', book: '' }]);
@@ -75,7 +77,7 @@ function BookSearch({ getBookDetails }: TBookSearch) {
                         {props.key}
                     </MenuItem>
                 )}
-                renderInput={(params: any) => <TextField {...params} label="Search books" />}
+                renderInput={(params: any) => <TextField {...params} label={t('Search books')} />}
             />
         </BooksSearchStyled>
     );
