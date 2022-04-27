@@ -1,5 +1,6 @@
 import React, { ChangeEventHandler, FocusEventHandler } from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { TextField, Button, IconButton, FormHelperText } from '@mui/material';
@@ -53,6 +54,7 @@ const isFormTextFieldMandatory = () => {
 
 const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     return (
         <BooksFormStyled>
@@ -81,7 +83,7 @@ const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
                         {formFieldsData.map(({ name, mandatory }) => (
                             <FormTextField
                                 key={name}
-                                fieldName={name}
+                                fieldName={t(name)}
                                 handleChange={handleChange}
                                 handleBlur={handleBlur}
                                 values={values[name]}
@@ -91,7 +93,7 @@ const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
                             />
                         ))}
                         <Button variant="contained" type="submit" disabled={isSubmitting}>
-                            Submit
+                            {t('submit')}
                         </Button>
                     </form>
                 )}
