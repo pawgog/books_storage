@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Dialog, Button, Typography } from '@mui/material';
 import { BooksFormModalContentStyled } from '../styles/BookModal.styled';
 
@@ -10,16 +11,18 @@ interface ConfirmModalType {
 }
 
 function ConfirmModal({ confirmMessage, confirmResultFnc, handleCloseConfirm, isOpen }: ConfirmModalType) {
+    const { t } = useTranslation();
+
     return (
         <>
             <Dialog open={isOpen} onClose={handleCloseConfirm} className="dialog-modal">
                 <Typography variant="h5">{confirmMessage}</Typography>
                 <BooksFormModalContentStyled>
                     <Button variant="outlined" onClick={() => confirmResultFnc(true)}>
-                        Yes
+                        {t('yes')}
                     </Button>
                     <Button variant="outlined" onClick={() => confirmResultFnc(false)}>
-                        No
+                        {t('no')}
                     </Button>
                 </BooksFormModalContentStyled>
             </Dialog>
