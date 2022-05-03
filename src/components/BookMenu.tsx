@@ -37,7 +37,12 @@ function BookMenu({ handleOpenModal, filterBooksTable, filterValue }: BookMenuTy
                     />
                     <StyledSelectBox>
                         <FormControl fullWidth>
-                            <Select id="select-language" value={lang} onChange={(e) => handleChange(e.target.value)}>
+                            <Select
+                                id="select-language"
+                                size="small"
+                                value={lang}
+                                onChange={(e) => handleChange(e.target.value)}
+                            >
                                 <MenuItem value="en">English</MenuItem>
                                 <MenuItem value="pl">Polski</MenuItem>
                             </Select>
