@@ -6,12 +6,20 @@ export const StyledToolbar = styled(Toolbar)`
 
     & .MuiInputBase-root {
         color: ${({ theme }) => theme.colors.white};
+
+        & svg {
+            fill: ${({ theme }) => theme.colors.white};
+        }
+        & fieldset,
+        &:hover:not(.Mui-disabled):before,
+        &:hover,
         &::before {
-            border-bottom: 1px solid ${({ theme }) => theme.colors.white};
+            border-color: ${({ theme }) => theme.colors.white};
         }
-        &:hover:not(.Mui-disabled):before {
-            border-bottom: 2px solid ${({ theme }) => theme.colors.white};
-        }
+    }
+    & .MuiOutlinedInput-root,
+    & .MuiOutlinedInput-root:hover {
+        border: 1px solid ${({ theme }) => theme.colors.white};
     }
 `;
 
