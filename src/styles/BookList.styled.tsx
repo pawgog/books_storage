@@ -2,12 +2,12 @@ import styled, { css } from 'styled-components';
 
 const ArrowIcon = css`
     content: '';
-    background: url('https://img.icons8.com/ios/24/000000/arrow--v1.png');
+    background: url('https://img.icons8.com/small/32/000000/long-arrow-up.png');
     background-size: cover;
     position: absolute;
-    width: 20px;
-    height: 20px;
-    margin: 2px 0 0 5px;
+    width: 15px;
+    height: 15px;
+    margin: 5px 10px;
 `;
 
 const BookListStyled = styled.div`
@@ -33,12 +33,12 @@ const BookListStyled = styled.div`
 
         &[class*='asc']::after {
             ${ArrowIcon}
-            transform: rotate(-90deg);
+            transform: rotate(0deg);
         }
 
         &[class*='desc']::after {
             ${ArrowIcon}
-            transform: rotate(90deg);
+            transform: rotate(180deg);
         }
 
         & > button {
