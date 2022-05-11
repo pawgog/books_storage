@@ -93,7 +93,7 @@ const BookForm = ({ handleClose, bookDetails, isEditForm }: TBookForm) => {
                             />
                         ))}
                         <Button variant="contained" type="submit" disabled={isSubmitting}>
-                            {t('submit')}
+                            {isEditForm ? t('edit') : t('submit')}
                         </Button>
                     </form>
                 )}
