@@ -4,7 +4,8 @@ import { Box, Toolbar } from '@mui/material';
 export const StyledToolbar = styled(Toolbar)`
     justify-content: space-between;
 
-    & .MuiInputBase-root {
+    & .MuiInputBase-root,
+    & .MuiInputLabel-root {
         color: ${({ theme }) => theme.colors.white};
 
         & svg {

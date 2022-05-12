@@ -29,6 +29,7 @@ function BookMenu({ handleOpenModal, filterBooksTable, filterValue }: BookMenuTy
                     <TextField
                         id="findAuthor"
                         variant="standard"
+                        label={t('Search by')}
                         onChange={(e) => filterBooksTable(e.target.value)}
                         value={filterValue}
                         InputProps={{
