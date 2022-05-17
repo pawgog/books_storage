@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Dialog } from '@mui/material';
 
 export const BooksModalStyled = styled(Dialog)`
-    & .MuiDialog-paper {
+    & .MuiPaper-root {
         min-width: 400px;
         padding: 50px;
     }

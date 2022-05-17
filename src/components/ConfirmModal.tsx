@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Dialog, Button, Typography } from '@mui/material';
-import { BooksFormModalContentStyled } from '../styles/BookModal.styled';
+import { Button, Typography } from '@mui/material';
+import { BooksModalStyled, BooksFormModalContentStyled } from '../styles/BookModal.styled';
 
 interface ConfirmModalType {
     confirmMessage: string;
@@ -15,7 +15,7 @@ function ConfirmModal({ confirmMessage, confirmResultFnc, handleCloseConfirm, is
 
     return (
         <>
-            <Dialog open={isOpen} onClose={handleCloseConfirm} className="dialog-modal">
+            <BooksModalStyled open={isOpen} onClose={handleCloseConfirm}>
                 <Typography variant="h5">{confirmMessage}</Typography>
                 <BooksFormModalContentStyled>
                     <Button variant="outlined" onClick={() => confirmResultFnc(true)}>
@@ -25,7 +25,7 @@ function ConfirmModal({ confirmMessage, confirmResultFnc, handleCloseConfirm, is
                         {t('no')}
                     </Button>
                 </BooksFormModalContentStyled>
-            </Dialog>
+            </BooksModalStyled>
         </>
     );
 }
